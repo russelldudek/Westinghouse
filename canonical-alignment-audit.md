@@ -26,6 +26,10 @@
 - `memory/cases/WATT.md` — `93fc7682b6d1cf0009e1034c74517c1f9bcf2070`
 - `memory/cases/AMETEK.md` — `5d0d96f85f00fa3aa32671ef70618665354e831c`
 
+## Final post-build canonical verification
+
+After the aligned campaign and downloadable artifacts were committed, every required canonical file above was re-read from the latest `main` branch. All SHAs remained identical to the source snapshot used for the alignment pass. No new instruction, evidence, portfolio, pattern, anti-clone, or relevant-case drift appeared during the build. The finished repository was then rechecked against those unchanged contracts before this audit was finalized.
+
 ## Mismatches discovered and corrected
 
 1. Added explicit campaign metadata, including the suggested chat name, canonical role title, repository, original posting URL, and US Letter print standard.
@@ -55,6 +59,7 @@
 - Interview brief: exactly 4 US Letter pages; all pages visually inspected at full-page scale.
 - Reciprocal document paths are deployment-safe relative URLs.
 - All PDF links resolve locally and each PDF opens successfully.
+- The committed PDF objects report page counts of 2 for the resume, 1 for the cover letter, and 4 for the interview brief.
 - Web-only controls are hidden in print output.
 - Keyboard focus styling, responsive behavior, and reduced-motion handling remain present.
 
