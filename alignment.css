@@ -1,0 +1,103 @@
+/* RoleForge canonical-alignment additions. Loaded after styles.css. */
+.document-actions {
+  width: min(calc(100% - 32px), 980px);
+  padding: 10px 12px;
+  border: 1px solid #ced9e3;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 30, 68, 0.08);
+}
+.document-actions .action-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.action-button {
+  appearance: none;
+  border: 1px solid #005eb8;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #001e44;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0.55rem 0.85rem;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 750;
+  line-height: 1;
+  text-decoration: none;
+}
+.action-button:hover { background: #e9f4fb; }
+.action-button.primary-action { background: #005eb8; color: #ffffff; }
+.action-button.primary-action:hover { background: #001e44; }
+.action-button:focus-visible { outline: 3px solid #00a3e0; outline-offset: 3px; }
+@media (max-width: 650px) {
+  .document-actions { align-items: flex-start; flex-direction: column; }
+  .document-actions .action-group { justify-content: flex-start; }
+}
+@media print {
+  .document-actions { display: none !important; }
+}
+/* Resume page-balance additions */
+.mechanisms-section { margin-top: 11px; }
+.mechanism-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px 10px; }
+.mechanism-grid > div { border: 1px solid #ced9e3; padding: 7px 8px; background: #f8fbfd; }
+.mechanism-grid strong { display: block; color: #005eb8; font-size: 8.8px; margin-bottom: 2px; }
+.mechanism-grid span { display: block; color: #34495e; font-size: 8.2px; line-height: 1.28; }
+@media print {
+  .mechanisms-section { break-inside: avoid; }
+  .mechanism-grid > div { break-inside: avoid; }
+}
+/* Readability and full-page balance: replace the earlier compressed resume scale. */
+.resume-sheet { padding: .53in .58in; }
+.resume-sheet .doc-header { margin-bottom: 17px; padding-bottom: 14px; }
+.resume-sheet .doc-header h1 { font-size: 30px; }
+.resume-sheet .doc-title { font-size: 12.5px; }
+.resume-sheet .doc-contact { font-size: 10px; }
+.resume-sheet .resume-summary { font-size: 11.2px; line-height: 1.45; margin-bottom: 14px; }
+.resume-sheet .capability-line { font-size: 9.4px; line-height: 1.35; padding: 9px 11px; margin-bottom: 15px; gap: 6px 12px; }
+.resume-sheet .doc-section { margin-top: 14px; }
+.resume-sheet .doc-section h2 { font-size: 11.5px; margin-bottom: 9px; padding-bottom: 5px; }
+.resume-sheet .role { margin-bottom: 12px; }
+.resume-sheet .role-head h3 { font-size: 11.7px; }
+.resume-sheet .role-head span { font-size: 9.2px; }
+.resume-sheet .role-title { font-size: 9.8px; margin: 2px 0 4px; }
+.resume-sheet .role ul { padding-left: 16px; }
+.resume-sheet .role li { font-size: 9.8px; line-height: 1.42; margin-bottom: 3.5px; }
+.resume-sheet .mechanisms-section { margin-top: 13px; }
+.resume-sheet .mechanism-grid { gap: 9px 11px; }
+.resume-sheet .mechanism-grid > div { padding: 9px 10px; }
+.resume-sheet .mechanism-grid strong { font-size: 9.3px; }
+.resume-sheet .mechanism-grid span { font-size: 8.9px; line-height: 1.35; }
+.resume-sheet .small-list li { font-size: 9.7px; line-height: 1.38; margin-bottom: 4px; }
+.resume-sheet .toolkit { font-size: 9.6px; line-height: 1.58; }
+.resume-sheet .doc-footer { margin-top: 12px; font-size: 8.5px; }
+/* Final full-page balance tuning after thumbnail review. */
+.resume-sheet { padding-top: .60in; padding-bottom: .46in; }
+.resume-sheet .doc-header { margin-bottom: 18px; }
+.resume-sheet .resume-summary { line-height: 1.50; margin-bottom: 15px; }
+.resume-sheet .capability-line { margin-bottom: 16px; padding-top: 10px; padding-bottom: 10px; }
+.resume-sheet .doc-section { margin-top: 15px; }
+.resume-sheet .role { margin-bottom: 14px; }
+.resume-sheet .role li { line-height: 1.50; margin-bottom: 4.2px; }
+.resume-sheet .mechanism-grid > div { padding: 11px 10px; }
+.resume-sheet .mechanism-grid span { font-size: 9.1px; line-height: 1.42; }
+.resume-sheet .small-list li { font-size: 9.9px; line-height: 1.48; margin-bottom: 4.5px; }
+.resume-sheet .toolkit { font-size: 9.9px; line-height: 1.68; }
+/* Cover-letter full-page composition. */
+.letter-paper { padding: .62in .72in .52in; }
+.letter-paper .doc-header { margin-bottom: 20px; padding-bottom: 15px; }
+.letter-paper .doc-header h1 { font-size: 31px; }
+.letter-paper .doc-title { font-size: 12.5px; }
+.letter-paper .doc-contact { font-size: 10px; }
+.letter-paper .letter-date { font-size: 11px; margin-top: 21px; }
+.letter-paper .letter-to { font-size: 11px; line-height: 1.45; margin: 20px 0; }
+.letter-paper h2 { font-size: 25px; line-height: 1.08; margin-bottom: 20px; }
+.letter-paper .letter-body p { font-size: 13.25px; line-height: 1.60; margin-bottom: 15px; }
+.letter-paper .letter-signoff { margin-top: 24px; font-size: 13.25px; line-height: 1.55; }
+@media print { .letter-links { display: none !important; } }
