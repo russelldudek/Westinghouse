@@ -25,61 +25,39 @@ jobs:
           tar -xzf /tmp/westinghouse-source.tgz -C .
           mkdir -p docs
 
-      - name: Install PDF rendering dependencies
+      - name: Render final PDFs with runner Chrome
         shell: bash
         run: |
           set -euo pipefail
-          sudo apt-get update
-          sudo apt-get install -y poppler-utils
-          mkdir -p /tmp/roleforge-render
-          cd /tmp/roleforge-render
-          npm init -y >/dev/null 2>&1
-          npm install playwright@1.52.0 >/dev/null 2>&1
-          npx playwright install --with-deps chromium
-
-      - name: Generate final PDFs from committed HTML
-        shell: bash
-        run: |
-          set -euo pipefail
+          command -v pdfinfo >/dev/null || { sudo apt-get update; sudo apt-get install -y poppler-utils; }
+          BROWSER=$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)
+          if [ -z "$BROWSER" ]; then
+            sudo apt-get update
+            sudo apt-get install -y chromium-browser
+            BROWSER=$(command -v chromium-browser || command -v chromium)
+          fi
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/roleforge-http.log 2>&1 &
           SERVER_PID=$!
           trap 'kill $SERVER_PID || true' EXIT
           sleep 2
-          cat > /tmp/roleforge-render/render.js <<'NODE'
-          const { chromium } = require('/tmp/roleforge-render/node_modules/playwright');
-          const jobs = [
-            ['resume.html', 'docs/russell-dudek-westinghouse-opx-chief-of-staff-resume.pdf'],
-            ['cover-letter.html', 'docs/russell-dudek-westinghouse-opx-chief-of-staff-cover-letter.pdf'],
-            ['interview-brief.html', 'docs/russell-dudek-westinghouse-opx-chief-of-staff-interview-brief.pdf'],
-            ['120-day-plan.html', 'docs/russell-dudek-westinghouse-opx-chief-of-staff-120-day-plan.pdf']
-          ];
-          (async () => {
-            const browser = await chromium.launch({ headless: true });
-            for (const [html, pdf] of jobs) {
-              const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
-              await page.goto(`http://127.0.0.1:8765/${html}`, { waitUntil: 'networkidle' });
-              await page.emulateMedia({ media: 'print' });
-              await page.pdf({
-                path: pdf,
-                format: 'Letter',
-                printBackground: true,
-                preferCSSPageSize: true,
-                margin: { top: '0', right: '0', bottom: '0', left: '0' }
-              });
-              await page.close();
-            }
-            await browser.close();
-          })().catch(error => { console.error(error); process.exit(1); });
-          NODE
-          node /tmp/roleforge-render/render.js
+          render() {
+            local html="$1" pdf="$2"
+            "$BROWSER" --headless --no-sandbox --disable-gpu --hide-scrollbars \
+              --no-pdf-header-footer --virtual-time-budget=3000 \
+              --print-to-pdf="$pdf" "http://127.0.0.1:8765/$html"
+            test -s "$pdf"
+          }
+          render resume.html docs/russell-dudek-westinghouse-opx-chief-of-staff-resume.pdf
+          render cover-letter.html docs/russell-dudek-westinghouse-opx-chief-of-staff-cover-letter.pdf
+          render interview-brief.html docs/russell-dudek-westinghouse-opx-chief-of-staff-interview-brief.pdf
+          render 120-day-plan.html docs/russell-dudek-westinghouse-opx-chief-of-staff-120-day-plan.pdf
 
-      - name: Verify PDF contracts
+      - name: Verify document contracts
         shell: bash
         run: |
           set -euo pipefail
           check_pages() {
             local file="$1" expected="$2"
-            test -s "$file"
             actual=$(pdfinfo "$file" | awk '/^Pages:/ {print $2}')
             echo "$file: $actual pages"
             test "$actual" = "$expected"
