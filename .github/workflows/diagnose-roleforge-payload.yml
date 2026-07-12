@@ -23,7 +23,7 @@ jobs:
           {
             date -u
             echo "run: $GITHUB_RUN_ID"
-            echo 'validation generation: exact-blob-repair'
+            echo 'validation generation: 625-byte-segments'
             wc -c .roleforge-payload/chunk-*
             echo 'chunk checksums:'
             sha256sum .roleforge-payload/chunk-*
@@ -42,5 +42,5 @@ jobs:
           git config user.name 'RoleForge Payload Diagnostic'
           git config user.email 'actions@users.noreply.github.com'
           git add payload-diagnostic.txt
-          git commit -m 'Record exact RoleForge payload validation'
+          git commit -m 'Record 625-byte RoleForge payload validation'
           git push origin HEAD:main
