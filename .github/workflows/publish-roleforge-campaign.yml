@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: westinghouse-roleforge-publication
+  cancel-in-progress: true
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -16,6 +20,17 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
+
+      - name: Publish workflow run reference
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'RoleForge Campaign Publisher'
+          git config user.email 'actions@users.noreply.github.com'
+          printf '%s\n' "$GITHUB_RUN_ID" > publish-run-id.txt
+          git add publish-run-id.txt
+          git commit -m 'Record active RoleForge publication run'
+          git push origin HEAD:main
 
       - name: Restore audited campaign source
         shell: bash
@@ -72,12 +87,11 @@ jobs:
         run: |
           set -euo pipefail
           printf 'ROLEFORGE-WESTINGHOUSE-PUBLICATION-RUN-%s\n' "$GITHUB_RUN_ID" > deployment-proof.txt
-          rm -f resume.pdf cover-letter.pdf alignment.css
+          rm -f resume.pdf cover-letter.pdf alignment.css publish-run-id.txt
           rm -rf .roleforge-payload
           rm -f .github/workflows/fetch-brand-assets.yml
           rm -f .github/workflows/publish-roleforge-campaign.yml
-          git config user.name 'RoleForge Campaign Publisher'
-          git config user.email 'actions@users.noreply.github.com'
+          git pull --rebase origin main
           git add -A
           git commit -m 'Publish complete Westinghouse RoleForge campaign'
           git push origin HEAD:main
