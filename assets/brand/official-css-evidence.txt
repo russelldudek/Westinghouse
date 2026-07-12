@@ -1,0 +1,65 @@
+[corporate main CSS]
+Font-family declarations:
+- 'Gotham'
+- 'Gotham',Verdana,“Helvetica Neue”,Helvetica,sans-serif
+- 'Gotham',Verdana,“Helvetica Neue”,Helvetica,sans-serif!important
+- 'GothamMedium',Gotham Medium,"Gotham Medium",Arial,Helvetica,Sans-Serif
+Frequent/source color candidates:
+- #253470 (45)
+- #487C09 (28)
+- #707070 (18)
+- #3C3C3C (13)
+- #e0e0e0 (13)
+- #00859B (12)
+- #5d7e95 (9)
+- #2c3a57 (8)
+- #12326A (7)
+- #457D35 (7)
+- #6A6A6A (5)
+- #ffffff (4)
+- #e2e2e2 (4)
+- #25346A (4)
+- #BCBCBC (4)
+- #040404 (4)
+- #1EC2F3 (3)
+- #487c09 (3)
+- #3c3c3c (3)
+- #78272a (3)
+- #747474 (2)
+- #e7e7e7 (2)
+- #2f89c6 (2)
+- #1E396A (2)
+- #979797 (2)
+- #224170 (2)
+- #595959 (2)
+- #6E6F71 (1)
+- #fdfdfd (1)
+- #eeeeee (1)
+
+[corporate theme CSS]
+Font-family declarations:
+- 'Gotham',Verdana,“Helvetica Neue”,Helvetica,sans-serif
+Frequent/source color candidates:
+- #1E396A (9)
+- #0675BC (9)
+- #487C09 (7)
+- #6D6E71 (6)
+- #3C3C3C (5)
+- #9D9D9D (3)
+- #3c3c3c (2)
+- #FDD922 (2)
+- #166AB0 (1)
+- #253470 (1)
+- #343434 (1)
+
+[careers CSS]
+Font-family declarations:
+- 'custom1457a953400b45d78ea27'
+- 'custom251781b9d97f4f919ab63'
+- 'custom31b7f1c994d540198f549'
+- 'custom4eddb2cda2c149b7a0512'
+- 'custom58818f3c002d48fa9022e'
+- 'custom663e486959fc4da7a1ac5'
+- 'customc311453eded94bae8721b'
+- custom663e486959fc4da7a1ac5
+Frequent/source color candidates:
