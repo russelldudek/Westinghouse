@@ -1,0 +1,58 @@
+{
+  "base": "https://russelldudek.github.io/Westinghouse/",
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 900,
+      "overflow": 0,
+      "logoVisible": true,
+      "independent": true,
+      "navToggleVisible": false,
+      "scenario": "capacity",
+      "simulator": "OUTSIDE ENVELOPE"
+    },
+    "laptop": {
+      "width": 1280,
+      "height": 800,
+      "overflow": 0,
+      "logoVisible": true,
+      "independent": true,
+      "navToggleVisible": false,
+      "scenario": "capacity",
+      "simulator": "OUTSIDE ENVELOPE"
+    },
+    "tablet": {
+      "width": 768,
+      "height": 1024,
+      "overflow": 0,
+      "logoVisible": true,
+      "independent": true,
+      "navToggleVisible": true,
+      "scenario": "capacity",
+      "simulator": "OUTSIDE ENVELOPE"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "logoVisible": true,
+      "independent": true,
+      "navToggleVisible": true,
+      "scenario": "capacity",
+      "simulator": "OUTSIDE ENVELOPE"
+    }
+  },
+  "reducedMotion": {
+    "contourAnimation": "none",
+    "coreAnimation": "none",
+    "signalDisplay": "none",
+    "controlsUsable": true,
+    "scenario": "decision"
+  },
+  "consoleErrors": [
+    "desktop: Failed to load resource: the server responded with a status of 404 ()"
+  ],
+  "pageErrors": [],
+  "passed": true,
+  "failures": []
+}
