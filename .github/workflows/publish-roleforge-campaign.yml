@@ -32,11 +32,15 @@ jobs:
           git commit -m 'Record active RoleForge publication run'
           git push origin HEAD:main
 
-      - name: Restore audited campaign source
+      - name: Restore checksum-verified campaign source
         shell: bash
         run: |
           set -euo pipefail
-          cat .roleforge-payload/chunk-* | base64 --decode > /tmp/westinghouse-source.tgz
+          cat .roleforge-payload/chunk-* > /tmp/westinghouse-source.b64
+          echo 'b334aedfc173965e29301dd496fd2800de9d709b37a9724fa1694c18e9c40a26  /tmp/westinghouse-source.b64' | sha256sum -c -
+          base64 --decode /tmp/westinghouse-source.b64 > /tmp/westinghouse-source.tgz
+          echo '0b4d125d6e640b633eae54eb6df595d47cc071c10c1df6010db23ed316b9785e  /tmp/westinghouse-source.tgz' | sha256sum -c -
+          tar -tzf /tmp/westinghouse-source.tgz
           tar -xzf /tmp/westinghouse-source.tgz -C .
           mkdir -p docs
 
@@ -87,9 +91,10 @@ jobs:
         run: |
           set -euo pipefail
           printf 'ROLEFORGE-WESTINGHOUSE-PUBLICATION-RUN-%s\n' "$GITHUB_RUN_ID" > deployment-proof.txt
-          rm -f resume.pdf cover-letter.pdf alignment.css publish-run-id.txt
+          rm -f resume.pdf cover-letter.pdf alignment.css publish-run-id.txt payload-diagnostic.txt
           rm -rf .roleforge-payload
           rm -f .github/workflows/fetch-brand-assets.yml
+          rm -f .github/workflows/diagnose-roleforge-payload.yml
           rm -f .github/workflows/publish-roleforge-campaign.yml
           git pull --rebase origin main
           git add -A
