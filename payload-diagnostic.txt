@@ -1,11 +1,14 @@
-Sun Jul 12 14:42:25 UTC 2026
-run: 29196765438
-validation generation: exact-blob-repair
+Sun Jul 12 14:44:40 UTC 2026
+run: 29196837191
+validation generation: 625-byte-segments
 10000 .roleforge-payload/chunk-00
 10000 .roleforge-payload/chunk-01
 10000 .roleforge-payload/chunk-02
  2500 .roleforge-payload/chunk-03-00
- 2500 .roleforge-payload/chunk-03-01
+  625 .roleforge-payload/chunk-03-01-00
+  625 .roleforge-payload/chunk-03-01-01
+  625 .roleforge-payload/chunk-03-01-02
+  625 .roleforge-payload/chunk-03-01-03
  2500 .roleforge-payload/chunk-03-02
  2500 .roleforge-payload/chunk-03-03
  3972 .roleforge-payload/chunk-04
@@ -15,17 +18,19 @@ chunk checksums:
 5437fed153b4f00eb4dc1348c39df0f7a6927a4cd8b15511f96a3a337ab62d59  .roleforge-payload/chunk-01
 c73aa38a6887209deae577894cce7cd0fa149d7d41caf77ab3b1c2ab191e45bf  .roleforge-payload/chunk-02
 1bf9d52a20fb088786243ea783cb04758a85b6304d2ce50602d3af9f610fad50  .roleforge-payload/chunk-03-00
-aa1c4d2e9e963ef34656bb27cb022700487690e545181ea4b6a6a696bb0876e5  .roleforge-payload/chunk-03-01
+bab969de996561a41306d168de7a5c7a4eb3e07750f392ffc586a68c69d8cdba  .roleforge-payload/chunk-03-01-00
+78e1b4618c4f7e7172653e4f9d76e51176bc46e7aa05b6437186447e4b5c2d29  .roleforge-payload/chunk-03-01-01
+b816c22b3da952a8a8e31416317f94e4f5a160c12cd2c600153dd4412d1151d4  .roleforge-payload/chunk-03-01-02
+93f2fdeb91979ef464388d5f351f93ff66b639fa69d17fcf1cd7f5f70e46f45a  .roleforge-payload/chunk-03-01-03
 12ab2ad65c2128768a10c0cc63dbbe26dd220cbf4e89f0bd6972bc9561998f0c  .roleforge-payload/chunk-03-02
 e7e026e4b06ebfb3008fb2220ae2979f478ae998c022237e91d9f256d14dedef  .roleforge-payload/chunk-03-03
 0eb71a17a1cdfa5735bb8cb34242536ee026bd13d6468f319590cd70e2a8feb5  .roleforge-payload/chunk-04
 combined:
 43972 /tmp/source.b64
-d98009f2737f9fb629cae73cbafd7863c7907351d77051a57d80965019533968  /tmp/source.b64
+b334aedfc173965e29301dd496fd2800de9d709b37a9724fa1694c18e9c40a26  /tmp/source.b64
 expected combined: b334aedfc173965e29301dd496fd2800de9d709b37a9724fa1694c18e9c40a26
-base64: invalid input
-base64 decode exit: 1
-e2ab436814397857efe9286fd7d467809dcc39a7d7a904126d99015209ceda3d  /tmp/source.tgz
+base64 decode exit: 0
+0b4d125d6e640b633eae54eb6df595d47cc071c10c1df6010db23ed316b9785e  /tmp/source.tgz
 expected archive: 0b4d125d6e640b633eae54eb6df595d47cc071c10c1df6010db23ed316b9785e
 index.html
 resume.html
@@ -35,8 +40,11 @@ interview-brief.html
 styles.css
 brand-tokens.css
 app.js
-
-gzip: stdin: unexpected end of file
-tar: Unexpected EOF in archive
-tar: Error is not recoverable: exiting now
-tar validation exit: 2
+README.md
+brand-intelligence.md
+campaign-metadata.json
+artifact-manifest.json
+canonical-alignment-audit.md
+brand-fidelity-audit.md
+campaign-completion-audit.md
+tar validation exit: 0
