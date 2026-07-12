@@ -61,12 +61,19 @@ jobs:
           PY
           file assets/brand/westinghouse-logo-both-278x67.png
           sha256sum assets/brand/westinghouse-logo-both-278x67.png > assets/brand/westinghouse-logo-both-278x67.sha256
-      - name: Commit acquired assets
+          printf '%s\n' "$GITHUB_RUN_ID" > assets/brand/brand-artifact-run-id.txt
+      - name: Upload brand asset bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: westinghouse-brand-assets
+          path: assets/brand
+          if-no-files-found: error
+      - name: Commit acquired assets and run reference
         shell: bash
         run: |
           git config user.name 'RoleForge Brand Asset Bot'
           git config user.email 'actions@users.noreply.github.com'
           git add assets/brand
           git diff --cached --quiet && exit 0
-          git commit -m 'Add official Westinghouse brand assets'
+          git commit -m 'Refresh official Westinghouse brand asset evidence'
           git push origin HEAD:main
