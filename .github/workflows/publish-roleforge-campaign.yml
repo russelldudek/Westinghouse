@@ -96,7 +96,6 @@ jobs:
           rm -f .github/workflows/fetch-brand-assets.yml
           rm -f .github/workflows/diagnose-roleforge-payload.yml
           rm -f .github/workflows/publish-roleforge-campaign.yml
-          git pull --rebase origin main
           git add -A
           git commit -m 'Publish complete Westinghouse RoleForge campaign'
           git push origin HEAD:main
