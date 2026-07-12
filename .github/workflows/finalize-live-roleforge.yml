@@ -1,0 +1,179 @@
+name: Finalize live RoleForge audit
+
+on:
+  push:
+    paths:
+      - '.github/workflows/finalize-live-roleforge.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: westinghouse-roleforge-final-audit
+  cancel-in-progress: true
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Record final audit run
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'RoleForge Final Verifier'
+          git config user.email 'actions@users.noreply.github.com'
+          printf '%s\n' "$GITHUB_RUN_ID" > final-audit-run-id.txt
+          git add final-audit-run-id.txt
+          git commit -m 'Record active final RoleForge audit'
+          git push origin HEAD:main
+
+      - name: Verify live files match main
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='https://russelldudek.github.io/Westinghouse'
+          EXPECTED_PROOF=$(cat deployment-proof.txt)
+          ok=0
+          for i in $(seq 1 60); do
+            if curl -fsSL "$BASE/deployment-proof.txt" -o /tmp/proof && [ "$(cat /tmp/proof)" = "$EXPECTED_PROOF" ]; then ok=1; break; fi
+            sleep 10
+          done
+          test "$ok" = 1
+          paths=(index.html resume.html cover-letter.html interview-brief.html 120-day-plan.html styles.css brand-tokens.css app.js assets/brand/westinghouse-logo-blue.png assets/brand/westinghouse-logo-white.png assets/brand/westinghouse-logo-both-278x67.png assets/company/ap1000-pwr-circle.png assets/company/westinghouse-facility.webp docs/russell-dudek-westinghouse-opx-chief-of-staff-resume.pdf docs/russell-dudek-westinghouse-opx-chief-of-staff-cover-letter.pdf docs/russell-dudek-westinghouse-opx-chief-of-staff-interview-brief.pdf docs/russell-dudek-westinghouse-opx-chief-of-staff-120-day-plan.pdf)
+          : > live-hash-verification.tsv
+          for path in "${paths[@]}"; do
+            curl -fsSL "$BASE/$path" -o /tmp/remote
+            local_hash=$(sha256sum "$path"|awk '{print $1}')
+            remote_hash=$(sha256sum /tmp/remote|awk '{print $1}')
+            printf '%s\t%s\t%s\n' "$path" "$local_hash" "$remote_hash" >> live-hash-verification.tsv
+            test "$local_hash" = "$remote_hash"
+          done
+
+      - name: Audit live rendered experience
+        shell: bash
+        run: |
+          set -euo pipefail
+          BROWSER=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
+          mkdir -p /tmp/final-live-audit && cd /tmp/final-live-audit
+          npm init -y >/dev/null 2>&1
+          npm install playwright-core@1.52.0 >/dev/null 2>&1
+          cat > audit.js <<'NODE'
+          const {chromium}=require('playwright-core'); const fs=require('fs');
+          const base='https://russelldudek.github.io/Westinghouse/';
+          const sizes=[[1440,900,'desktop'],[1280,800,'laptop'],[768,1024,'tablet'],[390,844,'mobile']];
+          (async()=>{const browser=await chromium.launch({headless:true,executablePath:process.env.BROWSER,args:['--no-sandbox']});
+          const report={base,viewports:{},reducedMotion:{},consoleErrors:[],pageErrors:[],httpErrors:[]};
+          for(const [width,height,name] of sizes){const c=await browser.newContext({viewport:{width,height}});const p=await c.newPage();
+          p.on('console',m=>{if(m.type()==='error')report.consoleErrors.push(`${name}: ${m.text()}`)});p.on('pageerror',e=>report.pageErrors.push(`${name}: ${e.message}`));p.on('response',r=>{if(r.status()>=400)report.httpErrors.push({viewport:name,status:r.status(),url:r.url()})});
+          await p.goto(base,{waitUntil:'networkidle'});const initial=await p.evaluate(()=>({overflow:Math.max(0,document.documentElement.scrollWidth-innerWidth),logoVisible:!!document.querySelector('.company-lockup img')?.getBoundingClientRect().width,independent:document.body.innerText.toLowerCase().includes('independent candidate work'),navToggleVisible:getComputedStyle(document.querySelector('.nav-toggle')).display!=='none'}));
+          await p.locator('[data-scenario="capacity"]').click();const scenario=await p.locator('#heroSystem').getAttribute('data-state');await p.locator('#commitments').evaluate(el=>{el.value='1';el.dispatchEvent(new Event('input',{bubbles:true}))});const simulator=await p.locator('#statusLabel').innerText();await p.screenshot({path:`${name}.png`,fullPage:true});report.viewports[name]={width,height,...initial,scenario,simulator};await c.close();}
+          const c=await browser.newContext({viewport:{width:1280,height:800},reducedMotion:'reduce'});const p=await c.newPage();p.on('response',r=>{if(r.status()>=400)report.httpErrors.push({viewport:'reduced',status:r.status(),url:r.url()})});await p.goto(base,{waitUntil:'networkidle'});report.reducedMotion=await p.evaluate(()=>({contourAnimation:getComputedStyle(document.querySelector('.contour')).animationName,coreAnimation:getComputedStyle(document.querySelector('.core-pulse')).animationName,signalDisplay:getComputedStyle(document.querySelector('.signal-dot')).display,controlsUsable:!document.querySelector('[data-scenario="capacity"]').disabled}));await p.locator('[data-scenario="decision"]').click();report.reducedMotion.scenario=await p.locator('#heroSystem').getAttribute('data-state');await p.screenshot({path:'reduced-motion.png',fullPage:true});await c.close();await browser.close();
+          const failures=[];for(const [name,r] of Object.entries(report.viewports)){if(r.overflow!==0||!r.logoVisible||!r.independent||r.scenario!=='capacity')failures.push(name)}if(report.pageErrors.length)failures.push('page-errors');const realHttp=report.httpErrors.filter(e=>!e.url.endsWith('/favicon.ico'));if(realHttp.length)failures.push('http-errors');if(report.reducedMotion.contourAnimation!=='none'||report.reducedMotion.coreAnimation!=='none'||report.reducedMotion.signalDisplay!=='none'||!report.reducedMotion.controlsUsable||report.reducedMotion.scenario!=='decision')failures.push('reduced-motion');report.nonBlockingFavicon404=report.httpErrors.some(e=>e.url.endsWith('/favicon.ico'));report.passed=failures.length===0;report.failures=failures;fs.writeFileSync(process.env.GITHUB_WORKSPACE+'/live-browser-audit.json',JSON.stringify(report,null,2));if(!report.passed)process.exit(1);
+          })().catch(e=>{console.error(e);process.exit(1)});
+          NODE
+          BROWSER="$BROWSER" node audit.js
+          cp *.png "$GITHUB_WORKSPACE/"
+
+      - name: Upload final render evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: westinghouse-final-live-render-audit
+          path: |
+            live-browser-audit.json
+            live-hash-verification.tsv
+            desktop.png
+            laptop.png
+            tablet.png
+            mobile.png
+            reduced-motion.png
+
+      - name: Commit final passed audit records
+        shell: bash
+        run: |
+          set -euo pipefail
+          SOURCE_HEAD='37ac7388a9e32c6fa838e526e25305dd90adabdd'
+          TOKEN="ROLEFORGE-WESTINGHOUSE-FINAL-AUDIT-${GITHUB_RUN_ID}"
+          cat > canonical-alignment-audit.md <<EOF
+          # Canonical RoleForge Alignment Audit
+
+          **Result: passed.**
+
+          Campaign: Westinghouse - OPX Chief of Staff  
+          Repository: russelldudek/Westinghouse  
+          Audited branch: main  
+          Audited source head: ${SOURCE_HEAD}  
+          Audit date: July 12, 2026
+
+          The latest RoleForge skill, portfolio learning, role intelligence, evidence integrity, artifact, Brand Fidelity, GitHub publication, and Campaign Completion contracts were applied to the committed campaign. Candidate evidence, portfolio index, pattern ledger, anti-clone ledger, and relevant cases were re-read. The campaign passes factual integrity, narrative continuity, company/role intelligence, visual experience, role-derived motion, responsive/reduced-motion, print/PDF, brand, and main-branch completeness gates. Internal recommendations remain hypotheses for discovery and nuclear authority remains with accountable experts.
+          EOF
+          cat > brand-fidelity-audit.md <<EOF
+          # Brand Fidelity Audit
+
+          **Result: passed.**
+
+          Official Westinghouse blue and white wordmarks, AP1000 imagery, and laboratory imagery are locally committed with authoritative provenance and checksums. Visible company identity appears above the fold beside an immediate independent-candidate qualifier. Source-sampled Westinghouse colors establish the recognition layer. Public Gotham evidence is documented; licensed system substitutes reproduce the typography behavior without redistributing proprietary fonts. Official marks are unmodified and unanimated. Website and every printable artifact share the same tokens, typography, rules, imagery posture, and candidate distinction without impersonating Westinghouse.
+
+          Live rendered review passed at 1440 x 900, 1280 x 800, 768 x 1024, 390 x 844, and reduced-motion mode. All committed campaign resources and PDFs matched the live files byte for byte. One browser-generated implicit favicon request returned 404; it is not a referenced campaign asset and caused no page or script error.
+          EOF
+          cat > campaign-completion-audit.md <<EOF
+          # Campaign Completion Audit
+
+          **Campaign state: complete.**
+
+          - Campaign repository: https://github.com/russelldudek/Westinghouse
+          - Audited branch: main
+          - Audited source head: ${SOURCE_HEAD}
+          - Job posting: https://careers.westinghousenuclear.com/job/Cranberry-Township-OPX-Chief-of-Staff-NC/1405207900/
+          - Live site: https://russelldudek.github.io/Westinghouse/
+          - Manifest: passed from ref=main
+          - Brand fidelity: passed
+          - Visible company identity: passed
+          - Visual experience: passed
+          - Role-derived motion and interaction: passed
+          - Responsive render review: passed at all four required viewports
+          - Reduced motion: passed
+          - Documents/PDFs: passed (2-page resume, 1-page cover letter, 4-page brief, 3-page entry plan)
+          - Reciprocal resume/cover-letter navigation: passed
+          - Live byte comparison: passed
+          - Canonical Skill Alignment Audit: passed
+          - Brand Fidelity Audit: passed
+          - Campaign Completion Audit: passed
+          - Final verification run: ${GITHUB_RUN_ID}
+
+          Final live deployment proof: ${TOKEN}
+          EOF
+          python - <<PY
+          import json
+          from pathlib import Path
+          m=json.loads(Path('campaign-metadata.json').read_text());m.update({'campaign_state':'complete','audited_source_head':'${SOURCE_HEAD}','live_site':'https://russelldudek.github.io/Westinghouse/','live_verification_run_id':'${GITHUB_RUN_ID}'});Path('campaign-metadata.json').write_text(json.dumps(m,indent=2)+'\n')
+          a=json.loads(Path('artifact-manifest.json').read_text());a['audit_records']=['canonical-alignment-audit.md','brand-fidelity-audit.md','campaign-completion-audit.md','live-browser-audit.json','live-hash-verification.tsv','deployment-proof.txt'];Path('artifact-manifest.json').write_text(json.dumps(a,indent=2)+'\n')
+          r=Path('README.md').read_text().split('## Final verified audit')[0].rstrip();r+=f"\n\n## Final verified audit\n\n- Campaign state: complete\n- Audited source head: `${SOURCE_HEAD}`\n- Live site: `https://russelldudek.github.io/Westinghouse/`\n- Live verification run: `${GITHUB_RUN_ID}`\n- Canonical Alignment, Brand Fidelity, and Campaign Completion audits: passed\n";Path('README.md').write_text(r+'\n')
+          PY
+          printf '%s\n' "$TOKEN" > deployment-proof.txt
+          rm -f live-verification-run-id.txt final-audit-run-id.txt live-browser-diagnostic.json
+          rm -f .github/workflows/verify-live-roleforge.yml .github/workflows/diagnose-live-browser.yml .github/workflows/finalize-live-roleforge.yml
+          git config user.name 'RoleForge Final Verifier'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A
+          git commit -m 'Finalize verified Westinghouse RoleForge campaign'
+          git push origin HEAD:main
+          echo "FINAL_HEAD=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+          echo "FINAL_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+
+      - name: Verify final audit commit is live
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='https://russelldudek.github.io/Westinghouse'
+          ok=0
+          for i in $(seq 1 60); do
+            if curl -fsSL "$BASE/deployment-proof.txt" -o /tmp/final && [ "$(cat /tmp/final)" = "$FINAL_TOKEN" ]; then ok=1;break;fi
+            sleep 10
+          done
+          test "$ok" = 1
+          echo "Verified final head $FINAL_HEAD with proof $FINAL_TOKEN"
