@@ -1,0 +1,72 @@
+name: Fetch official Westinghouse brand assets
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fetch-brand-assets.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-brand-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Acquire unmodified official assets and source evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets/brand
+          logo_url='https://westinghousenuclear.com/assets/img/westinghouse-logo-both-278x67.png'
+          home_url='https://westinghousenuclear.com/'
+          careers_url='https://careers.westinghousenuclear.com/'
+          curl -L --fail --retry 3 --retry-delay 2 "$logo_url" -o assets/brand/westinghouse-logo-both-278x67.png
+          curl -L --fail --retry 3 --retry-delay 2 "$home_url" -o /tmp/westinghouse-home.html
+          curl -L --fail --retry 3 --retry-delay 2 "$careers_url" -o /tmp/westinghouse-careers.html
+          python - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          from urllib.parse import urljoin
+
+          class Collector(HTMLParser):
+              def __init__(self, base):
+                  super().__init__()
+                  self.base = base
+                  self.styles = []
+                  self.images = []
+              def handle_starttag(self, tag, attrs):
+                  a = dict(attrs)
+                  if tag == 'link' and 'stylesheet' in a.get('rel','') and a.get('href'):
+                      self.styles.append(urljoin(self.base, a['href']))
+                  if tag == 'img' and a.get('src'):
+                      self.images.append(urljoin(self.base, a['src']))
+
+          rows = []
+          for name, base, path in [
+              ('corporate homepage','https://westinghousenuclear.com/','/tmp/westinghouse-home.html'),
+              ('careers homepage','https://careers.westinghousenuclear.com/','/tmp/westinghouse-careers.html')
+          ]:
+              parser = Collector(base)
+              parser.feed(Path(path).read_text(errors='ignore'))
+              rows.append(f'[{name}]')
+              rows.append('Stylesheets:')
+              rows.extend(f'- {u}' for u in parser.styles)
+              rows.append('Logo/image candidates:')
+              rows.extend(f'- {u}' for u in parser.images if 'logo' in u.lower() or 'westinghouse' in u.lower())
+              rows.append('')
+          Path('assets/brand/official-source-urls.txt').write_text('\n'.join(rows))
+          PY
+          file assets/brand/westinghouse-logo-both-278x67.png
+          sha256sum assets/brand/westinghouse-logo-both-278x67.png > assets/brand/westinghouse-logo-both-278x67.sha256
+      - name: Commit acquired assets
+        shell: bash
+        run: |
+          git config user.name 'RoleForge Brand Asset Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add assets/brand
+          git diff --cached --quiet && exit 0
+          git commit -m 'Add official Westinghouse brand assets'
+          git push origin HEAD:main
