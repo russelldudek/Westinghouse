@@ -1,0 +1,23 @@
+:root {
+  /* Official Westinghouse CSS values; provenance in brand-intelligence.md. */
+  --brand-primary: #253470;
+  --brand-primary-deep: #12326A;
+  --brand-secondary: #0675BC;
+  --brand-accent: #1EC2F3;
+  --brand-green: #487C09;
+  --brand-yellow: #FDD922;
+  --brand-red: #78272A;
+  --brand-light: #f2f7fa;
+  --brand-white: #ffffff;
+  --brand-ink: #2c3a57;
+  --brand-muted: #6A6A6A;
+  --brand-line: #d6dde5;
+  --campaign-attention: var(--brand-yellow);
+  --campaign-risk: var(--brand-red);
+  --campaign-safe: var(--brand-green);
+  --campaign-surface: #e8f3f8;
+  /* Official public CSS declares Gotham. No proprietary font files are copied.
+     Aptos/Segoe UI are documented system substitutes with comparable compact geometry. */
+  --font-display: "Aptos Display", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}

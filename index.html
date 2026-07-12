@@ -3,271 +3,226 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Russell Dudek candidate vision for the Westinghouse OPX Chief of Staff role." />
+  <meta name="description" content="Independent candidate vision by Russell Dudek for the Westinghouse OPX Chief of Staff role." />
   <title>Russell Dudek | Westinghouse OPX Chief of Staff Candidate Vision</title>
+  <link rel="stylesheet" href="brand-tokens.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Candidate vision home">
-      <span class="brand-mark" aria-hidden="true">RD</span>
-      <span>Russell Dudek</span>
+  <header class="site-header" id="top">
+    <a class="company-lockup" href="index.html" aria-label="Westinghouse OPX Chief of Staff candidate vision home">
+      <img src="assets/brand/westinghouse-logo-blue.png" alt="Westinghouse 140 years" width="278" height="67" />
+      <span><strong>Candidate vision for OPX Chief of Staff</strong><small>by Russell Dudek · independent candidate work</small></span>
     </a>
-    <nav aria-label="Primary navigation">
-      <a href="#model">Operating model</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav"><span></span><span></span><span></span><span class="sr-only">Toggle navigation</span></button>
+    <nav id="primary-nav" aria-label="Primary navigation">
+      <a href="#mandate">Mandate</a>
+      <a href="#envelope">Operating envelope</a>
       <a href="#evidence">Evidence</a>
-      <a href="#entry">120 days</a>
+      <a href="120-day-plan.html">120-day plan</a>
       <a href="resume.html">Resume</a>
-      <a href="cover-letter.html">Cover letter</a>
       <a class="nav-cta" href="interview-brief.html">Interview brief</a>
     </nav>
   </header>
 
   <main id="main">
-    <section class="hero">
+    <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <h1>Make execution legible<br />before it becomes urgent.</h1>
-        <p class="lede">My thesis for the OPX Chief of Staff role: build an executive operating envelope that connects commitments, constraints, decision rights, and recurring lessons—so leaders can scale the business without trading away safety, customer trust, or execution discipline.</p>
+        <p class="eyebrow">WESTINGHOUSE · OPX CHIEF OF STAFF</p>
+        <h1 id="hero-title">Make execution legible before it becomes urgent.</h1>
+        <p class="hero-lede">My thesis: build an executive operating envelope that keeps commitments, constraints, decision rights, and recurring lessons visible enough to scale the business without trading away safety, customer trust, or execution discipline.</p>
         <div class="hero-actions">
-          <a class="button primary" href="#model">Explore the operating envelope</a>
-          <a class="button ghost" href="resume.html">View role-aligned resume</a>
+          <a class="button primary" href="#envelope">Run the operating envelope</a>
+          <a class="button secondary" href="resume.html">View role-aligned resume</a>
         </div>
-        <p class="hypothesis-note"><strong>Role hypothesis:</strong> Public indexing did not expose the full job-description text reliably. Internal-remit recommendations on this site are therefore framed as discovery hypotheses, not claims about Westinghouse internal operations.</p>
+        <p class="hypothesis-note"><strong>Discovery boundary:</strong> The public posting confirms the title and location, but the complete internal remit was not reliably available through public indexing. Company-specific operating recommendations are hypotheses to test, not claims about current Westinghouse practice.</p>
       </div>
 
-      <div class="envelope-hero" aria-label="Illustration of the executive operating envelope">
-        <svg class="contours" viewBox="0 0 700 520" role="img" aria-labelledby="contourTitle contourDesc">
-          <title id="contourTitle">Executive operating envelope contour map</title>
-          <desc id="contourDesc">A series of nested technical contours surrounding a stable execution zone.</desc>
-          <path d="M72 270 C95 95 232 42 388 56 C541 71 650 165 631 302 C613 432 486 479 338 465 C191 451 51 405 72 270Z" />
-          <path d="M126 272 C143 135 251 92 381 101 C509 111 590 183 577 292 C563 396 461 429 344 418 C225 407 111 378 126 272Z" />
-          <path d="M183 274 C194 179 277 145 376 151 C474 157 533 210 523 286 C514 360 438 384 349 376 C259 368 172 348 183 274Z" />
-          <path d="M239 275 C246 223 301 200 369 204 C436 208 478 236 471 281 C465 329 415 343 354 338 C291 333 232 321 239 275Z" />
-        </svg>
-        <div class="envelope-label label-a">Commitments</div>
-        <div class="envelope-label label-b">Constraints</div>
-        <div class="envelope-label label-c">Decisions</div>
-        <div class="envelope-label label-d">Learning</div>
-        <div class="stable-zone">
-          <span>EXECUTION</span>
-          <strong>WITHIN ENVELOPE</strong>
+      <div class="hero-system" id="heroSystem" data-state="balanced" aria-label="Animated executive operating envelope showing commitments, constraints, decisions, and learning around a stable execution zone">
+        <div class="system-topline"><span>EXECUTIVE OPERATING ENVELOPE</span><strong id="heroStateLabel">Balanced execution</strong></div>
+        <div class="envelope-canvas">
+          <svg class="envelope-svg" viewBox="0 0 760 590" role="img" aria-labelledby="envelopeTitle envelopeDesc">
+            <title id="envelopeTitle">Executive operating envelope</title>
+            <desc id="envelopeDesc">Nested operating boundaries connect commitments, constraints, decisions, and learning. A signal moves through the system toward a legible execution zone.</desc>
+            <defs>
+              <linearGradient id="envelopeGlow" x1="0" x2="1">
+                <stop offset="0" stop-color="#0067a8" />
+                <stop offset="1" stop-color="#00a6c8" />
+              </linearGradient>
+              <filter id="softGlow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <g class="grid-lines" aria-hidden="true">
+              <path d="M80 84H680M80 164H680M80 244H680M80 324H680M80 404H680M80 484H680" />
+              <path d="M120 52V538M240 52V538M360 52V538M480 52V538M600 52V538" />
+            </g>
+            <g class="contour-group" aria-hidden="true">
+              <path class="contour contour-1" d="M92 296C106 114 246 56 412 64c166 8 282 110 264 258-17 147-150 208-309 194C207 503 80 446 92 296Z" />
+              <path class="contour contour-2" d="M151 297C162 151 272 107 405 112c132 5 224 83 210 201-13 116-119 161-246 151-128-9-228-47-218-167Z" />
+              <path class="contour contour-3" d="M214 298c8-105 86-137 185-134 99 4 164 60 155 144-9 82-87 113-181 106-95-7-167-33-159-116Z" />
+              <path class="contour contour-4" d="M278 298c5-63 50-83 114-81 63 2 105 37 99 88-6 50-55 69-116 64-61-4-102-20-97-71Z" />
+            </g>
+            <path class="signal-path" id="signalPath" d="M167 168C244 118 298 155 352 214C408 275 465 233 592 176" />
+            <circle class="signal-dot" r="7" aria-hidden="true"><animateMotion dur="5.8s" repeatCount="indefinite"><mpath href="#signalPath" /></animateMotion></circle>
+            <g class="system-node node-commit" transform="translate(136 138)"><circle r="30"/><text y="5">01</text><text class="node-label" x="46" y="-7">Commitments</text><text class="node-sub" x="46" y="14">Outcome · owner · date · confidence</text></g>
+            <g class="system-node node-constraint" transform="translate(596 142)"><circle r="30"/><text y="5">02</text><text class="node-label" x="-46" y="-7" text-anchor="end">Constraints</text><text class="node-sub" x="-46" y="14" text-anchor="end">Capacity · parts · field windows</text></g>
+            <g class="system-node node-decision" transform="translate(606 438)"><circle r="30"/><text y="5">03</text><text class="node-label" x="-46" y="-7" text-anchor="end">Decisions</text><text class="node-sub" x="-46" y="14" text-anchor="end">Threshold · authority · aging</text></g>
+            <g class="system-node node-learning" transform="translate(142 442)"><circle r="30"/><text y="5">04</text><text class="node-label" x="46" y="-7">Learning</text><text class="node-sub" x="46" y="14">Cause · standard · reuse</text></g>
+            <g class="execution-core" transform="translate(384 296)"><circle r="73"/><circle class="core-pulse" r="54"/><text y="-8">EXECUTION</text><text class="core-status" id="coreStatus" y="18">LEGIBLE</text></g>
+          </svg>
+          <div class="attention-strip" aria-live="polite">
+            <span>EXECUTIVE ATTENTION</span>
+            <strong id="attentionMessage">Routine variance remains local; thresholds preserve executive judgment.</strong>
+            <em id="attentionCount">1 signal</em>
+          </div>
         </div>
-        <div class="pulse-dot" aria-hidden="true"></div>
+        <div class="scenario-controls" aria-label="Operating envelope scenarios">
+          <button class="scenario is-active" type="button" data-scenario="balanced">Balanced</button>
+          <button class="scenario" type="button" data-scenario="capacity">Capacity pinch</button>
+          <button class="scenario" type="button" data-scenario="decision">Decision delay</button>
+          <button class="scenario" type="button" data-scenario="learning">Repeat failure</button>
+        </div>
+        <p class="system-caption">Select a scenario to see which boundary degrades and how executive attention should change.</p>
       </div>
     </section>
 
-    <section class="moment" aria-labelledby="moment-title">
-      <div class="section-intro">
-        <h2 id="moment-title">The opportunity is expansion. The operating challenge is coherence.</h2>
-        <p>Westinghouse is simultaneously signaling fleet-scale new-build ambition and operating-plant depth. The Chief of Staff opportunity, as I read it, is to help executive attention keep pace with that complexity.</p>
+    <section class="company-moment" id="mandate" aria-labelledby="moment-title">
+      <div class="moment-media">
+        <img src="assets/company/westinghouse-facility.webp" alt="Official Westinghouse laboratory image showing technical personnel at work; not Russell Dudek's work" />
+        <img class="ap1000-product" src="assets/company/ap1000-pwr-circle.png" alt="Official Westinghouse AP1000 pressurized water reactor product image" />
+        <div class="media-caption"><span>COMPANY MOMENT</span><strong>Applied science meets operating-plant consequence.</strong></div>
       </div>
-      <div class="moment-facts">
-        <article>
-          <strong>$17.5B</strong>
-          <p>DOE conditional commitment announced for long-lead items supporting up to 10 AP1000 units, with Westinghouse saying advance purchase could accelerate deployment timelines by up to three years.</p>
-          <a href="https://info.westinghousenuclear.com/news/westinghouse-announces-department-of-energy-partnership-to-jumpstart-large-scale-nuclear-supply-chain" target="_blank" rel="noopener">Source ↗</a>
-        </article>
-        <article>
-          <strong>Fleet scale</strong>
-          <p>Westinghouse submitted a standard AP1000 plant reference intended to improve repeatability and predictability for U.S. fleet deployment.</p>
-          <a href="https://info.westinghousenuclear.com/news/westinghouse-establishes-standard-ap1000-plant-for-fleet-scale-deployment-in-u.s" target="_blank" rel="noopener">Source ↗</a>
-        </article>
-        <article>
-          <strong>Broad OP portfolio</strong>
-          <p>The public Operating Plants portfolio spans engineering, outages, parts, digital optimization, I&amp;C, plant services, staffing, and long-term operations.</p>
-          <a href="https://westinghousenuclear.com/operating-plants/" target="_blank" rel="noopener">Source ↗</a>
-        </article>
-      </div>
-      <p class="moment-conclusion">My inference: the risk is not a lack of activity. It is executive friction—too many important commitments, dependencies, and signals competing for the same scarce attention. Reuters has also highlighted the sector’s execution burden, including historical cost, schedule, component-quality, supply-chain, and workforce risks. <a href="https://www.reuters.com/business/energy/westinghouse-megadeal-set-revitalize-nuclear-supply-chain--reeii-2026-01-26/" target="_blank" rel="noopener">External context ↗</a></p>
-    </section>
-
-    <section class="model-section" id="model" aria-labelledby="model-title">
-      <div class="section-intro split">
-        <div>
-          <h2 id="model-title">The Executive Operating Envelope</h2>
-          <p>A Chief of Staff should not become another reporting layer. The role should make it easier for leaders to distinguish ordinary variance from emerging systemic risk—and act at the right altitude.</p>
+      <div class="moment-story">
+        <p class="section-number">01 / WHY NOW</p>
+        <h2 id="moment-title">The opportunity is expansion. The operating problem is coherence.</h2>
+        <p>Westinghouse is advancing fleet-scale AP1000 deployment while supporting a public Operating Plants portfolio that spans engineering, outages, parts, digital optimization, I&amp;C, staffing, manufacturing, and long-term operations. The Chief of Staff opportunity is not more activity tracking. It is keeping executive attention synchronized with commitments and consequence.</p>
+        <div class="moment-measures" aria-label="Current Westinghouse public signals">
+          <div><strong>$17.5B</strong><span>conditional DOE commitment announced for long-lead supply-chain investment</span></div>
+          <div><strong>10 units</strong><span>AP1000 fleet scale contemplated in current public announcements</span></div>
+          <div><strong>100,000+</strong><span>nuclear parts supplied annually, according to Westinghouse</span></div>
         </div>
-        <p class="model-callout">The model is an illustrative candidate thesis, not Westinghouse internal data or process.</p>
-      </div>
-
-      <div class="envelope-workbench">
-        <div class="controls" aria-label="Operating envelope simulator">
-          <div class="control-group">
-            <label for="commitments">Commitment clarity <output id="commitmentsOut" for="commitments">3</output></label>
-            <input id="commitments" type="range" min="1" max="5" value="3" />
-            <p>Are outcome, date, customer, owner, and confidence explicit?</p>
-          </div>
-          <div class="control-group">
-            <label for="constraints">Constraint visibility <output id="constraintsOut" for="constraints">3</output></label>
-            <input id="constraints" type="range" min="1" max="5" value="3" />
-            <p>Are capacity, parts, engineering, field-window, and quality dependencies visible early?</p>
-          </div>
-          <div class="control-group">
-            <label for="decisions">Decision discipline <output id="decisionsOut" for="decisions">3</output></label>
-            <input id="decisions" type="range" min="1" max="5" value="3" />
-            <p>Are thresholds, decision rights, escalation routes, and aging clear?</p>
-          </div>
-          <div class="control-group">
-            <label for="learning">Learning reuse <output id="learningOut" for="learning">3</output></label>
-            <input id="learning" type="range" min="1" max="5" value="3" />
-            <p>Do recurring causes become reusable fixes, standards, and better planning assumptions?</p>
-          </div>
-        </div>
-
-        <div class="status-panel" aria-live="polite">
-          <div class="status-ring" id="statusRing">
-            <div>
-              <span id="statusLabel">AT THE EDGE</span>
-              <strong id="statusScore">60</strong>
-              <small>illustrative readiness</small>
-            </div>
-          </div>
-          <div class="bottleneck">
-            <span>Current limiting layer</span>
-            <strong id="bottleneckLabel">Commitment clarity</strong>
-            <p id="bottleneckText">The weakest layer defines the executive operating envelope. Improve the bottleneck before adding more review cadence.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="model-layers" aria-label="Operating envelope layers">
-        <article><span>01</span><h3>Commitment Map</h3><p>One view of outcomes, dates, customers, owners, confidence, and cross-business dependencies.</p></article>
-        <article><span>02</span><h3>Constraint Ledger</h3><p>Early visibility to the scarce resource, part, engineering decision, field window, or quality gate that can move a commitment.</p></article>
-        <article><span>03</span><h3>Decision Architecture</h3><p>Explicit thresholds, decision rights, escalation paths, decision aging, and closure—not more status collection.</p></article>
-        <article><span>04</span><h3>Learning Registry</h3><p>A disciplined way to distinguish one-off recovery from a pattern worth standardizing, preventing, or scaling.</p></article>
+        <div class="source-row"><a href="https://info.westinghousenuclear.com/news/westinghouse-announces-department-of-energy-partnership-to-jumpstart-large-scale-nuclear-supply-chain">DOE partnership source ↗</a><a href="https://info.westinghousenuclear.com/news/westinghouse-establishes-standard-ap1000-plant-for-fleet-scale-deployment-in-u.s">AP1000 reference source ↗</a><a href="https://westinghousenuclear.com/operating-plants/">Operating Plants source ↗</a></div>
       </div>
     </section>
 
-    <section class="decisions" aria-labelledby="decisions-title">
-      <div class="section-intro">
-        <h2 id="decisions-title">The role should make six executive decisions easier.</h2>
-        <p>The Chief of Staff earns leverage when recurring ambiguity becomes a better decision system.</p>
+    <section class="tensions" aria-labelledby="tensions-title">
+      <div class="section-heading"><p class="section-number">02 / OPERATING TENSIONS</p><h2 id="tensions-title">The role lives at the boundary between competing truths.</h2><p>The work is not to eliminate these tensions. It is to make them explicit enough that leaders can choose deliberately.</p></div>
+      <div class="tension-board">
+        <div class="tension-row"><strong>Growth</strong><span class="tension-line"><i></i></span><strong>Execution discipline</strong><small>More opportunity increases the cost of hidden dependencies and late escalation.</small></div>
+        <div class="tension-row"><strong>Speed</strong><span class="tension-line"><i></i></span><strong>Nuclear-grade governance</strong><small>Decision latency matters, but safety, quality, regulatory, and technical authority cannot blur.</small></div>
+        <div class="tension-row"><strong>Portfolio breadth</strong><span class="tension-line"><i></i></span><strong>One executive truth</strong><small>Different service lines need local judgment while leaders need a coherent commitment view.</small></div>
+        <div class="tension-row"><strong>Customer urgency</strong><span class="tension-line"><i></i></span><strong>Capacity realism</strong><small>Field windows and promises compete with scarce engineering, supply-chain, quality, and execution capacity.</small></div>
+        <div class="tension-row"><strong>Global scale</strong><span class="tension-line"><i></i></span><strong>Local accountability</strong><small>Standardize visibility and thresholds without centralizing decisions best made close to the work.</small></div>
       </div>
-      <ol class="decision-rail">
-        <li><span>01</span><div><h3>Where does executive attention go now?</h3><p>Separate routine variance from risks that cross business, customer, margin, safety, quality, or capacity boundaries.</p></div></li>
-        <li><span>02</span><div><h3>What deserves intervention—and what should stay local?</h3><p>Protect speed by defining escalation thresholds instead of centralizing every decision.</p></div></li>
-        <li><span>03</span><div><h3>Where should scarce expertise be allocated?</h3><p>Expose conflicts in engineering, field, quality, supply-chain, or program capacity before delivery dates collide.</p></div></li>
-        <li><span>04</span><div><h3>Which commitment is losing confidence?</h3><p>Track confidence decay and dependency aging, not merely red/yellow/green reporting.</p></div></li>
-        <li><span>05</span><div><h3>What recurring failure mode needs a system fix?</h3><p>Connect recoveries to root causes and standards rather than celebrating repeated heroics.</p></div></li>
-        <li><span>06</span><div><h3>What should stop?</h3><p>Create permission to retire low-value reviews, duplicate decks, and work that consumes attention without changing decisions.</p></div></li>
+    </section>
+
+    <section class="envelope-section" id="envelope" aria-labelledby="envelope-section-title">
+      <div class="section-heading inverse"><p class="section-number">03 / THE CANDIDATE THESIS</p><h2 id="envelope-section-title">The Executive Operating Envelope</h2><p>A four-layer mechanism that clarifies what leaders can trust, where risk is accumulating, and when attention should move.</p></div>
+      <div class="envelope-layers" role="list">
+        <article role="listitem"><span>01</span><h3>Commitment map</h3><p>Outcome, date, customer, owner, confidence, dependencies.</p></article>
+        <article role="listitem"><span>02</span><h3>Constraint ledger</h3><p>Capacity, parts, engineering, field window, quality or regulatory gate, aging.</p></article>
+        <article role="listitem"><span>03</span><h3>Decision architecture</h3><p>Threshold, authority, escalation route, decision age, closure.</p></article>
+        <article role="listitem"><span>04</span><h3>Learning registry</h3><p>Recurring cause, reusable fix, standard work, planning assumption, adoption.</p></article>
+      </div>
+      <div class="simulator" aria-label="Operating-envelope readiness simulator">
+        <div class="simulator-controls">
+          <label>Commitment clarity <output id="commitmentsOut">3</output><input id="commitments" type="range" min="1" max="5" value="3" /></label>
+          <label>Constraint visibility <output id="constraintsOut">3</output><input id="constraints" type="range" min="1" max="5" value="3" /></label>
+          <label>Decision discipline <output id="decisionsOut">3</output><input id="decisions" type="range" min="1" max="5" value="3" /></label>
+          <label>Learning reuse <output id="learningOut">3</output><input id="learning" type="range" min="1" max="5" value="3" /></label>
+        </div>
+        <div class="simulator-result" aria-live="polite"><div class="readiness-ring" id="statusRing"><span id="statusLabel">AT THE EDGE</span><strong id="statusScore">60</strong><small>illustrative readiness</small></div><div><span>Limiting boundary</span><strong id="bottleneckLabel">Commitment clarity</strong><p id="bottleneckText">Improve the weakest layer before adding more reporting cadence.</p></div></div>
+      </div>
+      <p class="hypothesis-note inverse-note">This is a candidate-created operating hypothesis, not a representation of Westinghouse internal systems or metrics.</p>
+    </section>
+
+    <section class="topology" aria-labelledby="topology-title">
+      <div class="section-heading"><p class="section-number">04 / STAKEHOLDER TOPOLOGY</p><h2 id="topology-title">Visibility should standardize. Authority should stay where judgment belongs.</h2><p>The Chief of Staff does not own every decision. The mechanism must preserve technical, safety, quality, regulatory, and frontline authority while making dependencies easier to see.</p></div>
+      <div class="altitude-map">
+        <div class="altitude-axis"><span>STRATEGIC<br/>ALTITUDE</span><span>WORK<br/>PROXIMITY</span></div>
+        <div class="altitude-steps">
+          <article><b>Executive sponsor</b><p>Sets priorities, resolves cross-business tradeoffs, protects scarce attention.</p><em>DECIDE / SPONSOR</em></article>
+          <article><b>OPX and peer functions</b><p>Programs, engineering, operations, quality, supply chain, commercial, finance, HR, digital.</p><em>OWN / INTEGRATE</em></article>
+          <article><b>Field and frontline teams</b><p>Hold operating context, customer timing, real constraints, and adoption burden.</p><em>EXECUTE / SIGNAL</em></article>
+          <article><b>Safety, quality, regulatory, legal</b><p>Retain independent authority and define non-negotiable boundaries.</p><em>GUARD / ESCALATE</em></article>
+          <article><b>Customers, utilities, suppliers, partners</b><p>Experience the consequences of confidence, predictability, responsiveness, and recovery.</p><em>VALIDATE / TRUST</em></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="decision-section" aria-labelledby="decision-title">
+      <div class="section-heading"><p class="section-number">05 / DECISION ARCHITECTURE</p><h2 id="decision-title">Executive leverage is measured in decisions changed—not decks produced.</h2></div>
+      <ol class="decision-track">
+        <li><span>01</span><div><h3>Attention</h3><p>Which signal crosses the boundary from routine variance to systemic risk?</p></div></li>
+        <li><span>02</span><div><h3>Intervention</h3><p>What deserves executive action, and what remains local?</p></div></li>
+        <li><span>03</span><div><h3>Allocation</h3><p>Where should scarce engineering, field, quality, or supply capacity move?</p></div></li>
+        <li><span>04</span><div><h3>Confidence</h3><p>Which commitment is losing confidence before the date becomes the headline?</p></div></li>
+        <li><span>05</span><div><h3>Learning</h3><p>Which repeated recovery needs a system fix rather than another heroic save?</p></div></li>
+        <li><span>06</span><div><h3>Stop</h3><p>Which review, report, or work stream consumes attention without changing a decision?</p></div></li>
       </ol>
     </section>
 
     <section class="scorecard" aria-labelledby="scorecard-title">
-      <div class="section-intro split">
-        <div>
-          <h2 id="scorecard-title">A balanced scorecard for executive leverage</h2>
-          <p>The exact measures should be discovered with the business. I would start by testing whether the cadence covers reliability, flow, economics, trust, and learning—not volume of activity.</p>
-        </div>
-        <p class="model-callout">Metric examples are hypotheses for discovery. They are not assertions about existing Westinghouse KPIs.</p>
-      </div>
-      <div class="table-wrap" role="region" aria-label="Illustrative executive scorecard" tabindex="0">
-        <table>
-          <thead><tr><th>Domain</th><th>Executive question</th><th>Illustrative measures to test</th></tr></thead>
-          <tbody>
-            <tr><th>Reliability</th><td>Are commitments becoming more predictable?</td><td>Milestone adherence · schedule confidence · recovery-plan closure</td></tr>
-            <tr><th>Flow</th><td>Where is work waiting for a constraint or decision?</td><td>Blocked milestones · constraint aging · decision latency</td></tr>
-            <tr><th>Economics</th><td>Where is execution friction leaking value?</td><td>Rework exposure · expedite burden · preventable margin leakage</td></tr>
-            <tr><th>Trust</th><td>Are safety, quality, regulatory, and customer signals surfacing early?</td><td>Leading exceptions · recurrence · recovery confidence</td></tr>
-            <tr><th>Learning</th><td>Are hard-won lessons becoming reusable advantage?</td><td>Repeat-cause rate · standard adoption · reuse across teams</td></tr>
-          </tbody>
-        </table>
+      <div class="section-heading inverse"><p class="section-number">06 / SUCCESS MEASURES</p><h2 id="scorecard-title">A scorecard for reliability, flow, economics, trust, adoption, and learning.</h2><p>Illustrative measurement hypotheses—not assertions about current Westinghouse KPIs.</p></div>
+      <div class="scorecard-table" role="region" aria-label="Illustrative executive scorecard" tabindex="0">
+        <div class="score-row score-head"><span>DOMAIN</span><span>EXECUTIVE QUESTION</span><span>MEASURES TO DISCOVER</span></div>
+        <div class="score-row"><strong>Reliability</strong><span>Are commitments becoming more predictable?</span><span>Milestone adherence · schedule confidence · recovery closure</span></div>
+        <div class="score-row"><strong>Flow</strong><span>Where is work waiting?</span><span>Blocked milestones · constraint aging · decision latency</span></div>
+        <div class="score-row"><strong>Economics</strong><span>Where does friction leak value?</span><span>Rework · expedite burden · preventable margin leakage</span></div>
+        <div class="score-row"><strong>Trust</strong><span>Do critical signals surface early?</span><span>Leading exceptions · recurrence · recovery confidence</span></div>
+        <div class="score-row"><strong>Adoption</strong><span>Are teams using the mechanism without shadow systems?</span><span>Meeting burden · source reuse · owner participation</span></div>
+        <div class="score-row"><strong>Learning</strong><span>Do hard-won lessons compound?</span><span>Repeat-cause rate · standard adoption · cross-team reuse</span></div>
       </div>
     </section>
 
     <section class="evidence" id="evidence" aria-labelledby="evidence-title">
-      <div class="section-intro">
-        <h2 id="evidence-title">Why my experience transfers</h2>
-        <p>The through-line is not industry hopping. It is building operating mechanisms where technical complexity, customer consequence, and cross-functional execution collide.</p>
-      </div>
-      <div class="evidence-trail">
-        <article>
-          <div class="evidence-year">2000–13</div>
-          <div class="evidence-body"><h3>Compunetics · Director of Operations and Engineering Management</h3><p>Led engineering, manufacturing, quality, customer delivery, and complex technical programs in advanced electronics and high-reliability environments. Built quality systems, standard work, root-cause practices, measures, and process controls.</p><strong>Transfers to: high-consequence technical execution, quality discipline, engineering-to-operations translation.</strong></div>
-        </article>
-        <article>
-          <div class="evidence-year">2014–18</div>
-          <div class="evidence-body"><h3>Amazon · Operations Management / Site Leader</h3><p>Led launch and execution for Amazon Prime Pittsburgh in a 24/7 customer-backward environment supporting approximately five million second-day orders annually. Built routines for labor, throughput, escalation, standard work, safety, quality, and customer experience.</p><strong>Transfers to: cadence under scale, visible flow, threshold-based escalation, frontline adoption.</strong></div>
-        </article>
-        <article>
-          <div class="evidence-year">2018–22</div>
-          <div class="evidence-body"><h3>ZeusVu · Chief Pilot, Autonomous Systems and Aerial Data Operations</h3><p>Led regulated drone operations across medical, energy, logistics, real-estate, and restricted-airspace contexts with a 100% safety record and no FAA incidents.</p><strong>Transfers to: disciplined execution in regulated, high-consequence environments and respect for human authority.</strong></div>
-        </article>
-        <article>
-          <div class="evidence-year">2025–Now</div>
-          <div class="evidence-body"><h3>Vape-Jet · Director of Operations</h3><p>Leads an AI-first operating transformation across production, purchasing, quality, customer success, support, engineering issue flow, ERP/Odoo, Jira, HubSpot, Slack, telemetry, and AI-assisted workflows in a robotics and machine-vision environment.</p><strong>Transfers to: connecting fragmented signals, technical-commercial handoffs, earlier risk detection, and adoption.</strong></div>
-        </article>
+      <div class="section-heading"><p class="section-number">07 / TRANSFERABLE EVIDENCE</p><h2 id="evidence-title">The through-line is operating mechanisms under consequence.</h2><p>The evidence is not “industry hopping.” It is repeated work where technical complexity, customer consequence, cross-functional execution, quality, and adoption collide.</p></div>
+      <div class="evidence-timeline">
+        <article><time>2000–13</time><div><h3>Compunetics</h3><h4>Director of Operations and Engineering Management</h4><p>Led engineering, manufacturing, quality, customer delivery, and complex technical programs in advanced electronics and high-reliability environments. Built quality systems, standard work, root-cause practices, performance measures, and process controls.</p><strong>Transfers to high-reliability execution and engineering-to-operations translation.</strong></div></article>
+        <article><time>2014–18</time><div><h3>Amazon</h3><h4>Operations Management / Site Leader</h4><p>Led Prime Pittsburgh launch and execution in a 24/7 customer-backward environment supporting approximately five million second-day orders annually. Built routines for labor, throughput, escalation, standard work, safety, quality, and customer experience.</p><strong>Transfers to cadence under scale, visible flow, and frontline adoption.</strong></div></article>
+        <article><time>2018–22</time><div><h3>ZeusVu</h3><h4>Chief Pilot, Autonomous Systems and Aerial Data Operations</h4><p>Led regulated operations across medical, energy, logistics, real-estate, and restricted-airspace contexts with a 100% safety record and no FAA incidents.</p><strong>Transfers to governed execution and respect for authority in high-consequence settings.</strong></div></article>
+        <article><time>2025–Now</time><div><h3>Vape-Jet</h3><h4>Director of Operations</h4><p>Leads AI-first operating transformation across production, purchasing, quality, customer success, support, engineering issue flow, ERP/Odoo, Jira, HubSpot, Slack, telemetry, and AI-assisted workflows in robotics and machine vision.</p><strong>Transfers to connecting fragmented signals, earlier risk detection, and adoption.</strong></div></article>
       </div>
     </section>
 
-    <section class="entry-plan" id="entry" aria-labelledby="entry-title">
-      <div class="section-intro">
-        <h2 id="entry-title">First 120 days: earn the right to simplify</h2>
-        <p>I would resist arriving with a prebuilt operating system. The first task is to learn where leaders already have trust, where information is duplicative, and where decisions routinely age.</p>
+    <section class="entry-plan" aria-labelledby="entry-title">
+      <div class="section-heading"><p class="section-number">08 / CHANGE BURDEN + ENTRY PLAN</p><h2 id="entry-title">Earn the right to simplify.</h2><p>The mechanism only works when teams trust the source, understand thresholds, retain authority, and see reporting burden go down—not up.</p></div>
+      <div class="change-contract"><span>People must change:</span><strong>where commitments live</strong><strong>when risks escalate</strong><strong>who closes decisions</strong><strong>how lessons become standards</strong></div>
+      <div class="plan-rail">
+        <article><span>0–30</span><h3>Observe the work</h3><p>Map decision rights, trusted sources, shadow decks, recurring escalations, and adoption friction.</p></article>
+        <article><span>31–60</span><h3>Build the shared view</h3><p>Prototype one commitment map and constraint ledger using existing data before asking teams to create more.</p></article>
+        <article><span>61–90</span><h3>Test decision cadence</h3><p>Run one bounded pilot and measure decision age, meeting burden, confidence, and early risk visibility.</p></article>
+        <article><span>91–120</span><h3>Scale what proves useful</h3><p>Standardize only mechanisms that improve decisions; hand ownership toward the work and retire low-value reporting.</p></article>
       </div>
-      <div class="horizons">
-        <article><span>0–30</span><h3>Observe the work</h3><p>Shadow executive reviews, customer and field rhythms, program and operations forums. Map who makes which decisions, what information they trust, where shadow decks exist, and which escalations recur.</p><ul><li>Stakeholder and decision-rights map</li><li>Review-cadence inventory</li><li>Top recurring friction hypotheses</li></ul></article>
-        <article><span>31–60</span><h3>Build the shared view</h3><p>Prototype a commitment map and constraint ledger using existing sources before asking teams to create new data. Define a small number of escalation thresholds with leaders.</p><ul><li>Commitment/dependency pilot</li><li>Constraint aging view</li><li>Draft escalation thresholds</li></ul></article>
-        <article><span>61–90</span><h3>Test decision cadence</h3><p>Run the model against one bounded portfolio or executive forum. Measure whether it shortens decision latency, reduces duplicate preparation, and surfaces risk earlier.</p><ul><li>Decision log and aging</li><li>Before/after meeting burden</li><li>Signal-to-action audit</li></ul></article>
-        <article><span>91–120</span><h3>Scale what proves useful</h3><p>Standardize only the mechanisms that improve decisions. Hand ownership to the teams closest to the work, define governance, and retire low-value reporting.</p><ul><li>Operating-envelope playbook</li><li>Ownership and governance model</li><li>Stop/start/continue review</li></ul></article>
-      </div>
+      <a class="button primary" href="120-day-plan.html">Open the full 120-day plan</a>
     </section>
 
     <section class="objection" aria-labelledby="objection-title">
-      <div class="objection-heading">
-        <h2 id="objection-title">The hard objection</h2>
-        <p>“You have not spent your career inside a nuclear OEM or utility.”</p>
-      </div>
-      <div class="transfer-memo">
-        <div>
-          <h3>True.</h3>
-          <p>I would not try to disguise that gap. Nuclear-specific expertise belongs with nuclear experts, and the Chief of Staff should strengthen—not blur—those decision boundaries.</p>
-        </div>
-        <div>
-          <h3>What I do bring</h3>
-          <p>Direct leadership in high-reliability electronics operations, quality systems, engineering/manufacturing integration, 24/7 scaled operations, regulated autonomous systems, and current AI-enabled robotics operations.</p>
-        </div>
-        <div>
-          <h3>The transferability case</h3>
-          <p>The job I am prepared to do is make technical execution more visible, connect cross-functional dependencies, clarify decision rights, surface risk earlier, and turn repeated recovery into better operating mechanisms.</p>
-        </div>
-      </div>
+      <div class="objection-question"><p class="section-number">09 / THE HARD OBJECTION</p><h2 id="objection-title">“You have not spent your career inside a nuclear OEM or utility.”</h2></div>
+      <div class="objection-answer"><strong>Correct.</strong><p>I would not disguise that gap. Nuclear-specific authority belongs with nuclear experts. My case is transferability: high-reliability technical operations, quality systems, engineering-manufacturing integration, 24/7 scaled execution, regulated autonomous systems, and current AI-enabled robotics operations.</p><p>The contribution is to make expert signals easier to hear at the right moment, clarify where decisions belong, expose cross-functional risk earlier, and convert repeated recovery into better mechanisms.</p></div>
     </section>
 
     <section class="questions" aria-labelledby="questions-title">
-      <div class="section-intro">
-        <h2 id="questions-title">Questions I would bring to the executive team</h2>
-        <p>Not because I assume the answers—because the quality of the operating system depends on them.</p>
-      </div>
+      <div class="section-heading"><p class="section-number">10 / EXECUTIVE QUESTIONS</p><h2 id="questions-title">Questions that test the thesis against reality.</h2></div>
       <div class="question-list">
-        <details><summary>Where does the leadership team currently spend disproportionate time reconciling different versions of reality?</summary><p>I would listen for whether the friction is data definition, timing, ownership, confidence, or competing incentives.</p></details>
-        <details><summary>Which decisions are routinely escalated too late—and which are escalated too often?</summary><p>This helps define thresholds and preserve local autonomy rather than making the Chief of Staff a central approval queue.</p></details>
-        <details><summary>Where do customer urgency and internal capacity collide most often?</summary><p>The answer would shape the first constraint ledger and the first bounded pilot.</p></details>
-        <details><summary>What execution risk worries the OPX leader that current dashboards do not reveal early enough?</summary><p>The operating envelope should begin with a real blind spot, not a generic dashboard redesign.</p></details>
-        <details><summary>What must remain local because judgment is closest to the work—and what truly benefits from standardization?</summary><p>This is the boundary condition for scaling without unnecessary bureaucracy.</p></details>
-        <details><summary>At the end of year one, what would make the executive team say the Chief of Staff materially changed how the business runs?</summary><p>I would convert that answer into the role’s outcome scorecard and guard against becoming a high-output coordination layer with low operating leverage.</p></details>
+        <details><summary>Where does the leadership team spend disproportionate time reconciling different versions of reality?</summary><p>This reveals whether the core problem is data fragmentation, accountability, meeting design, trust, or decision rights.</p></details>
+        <details><summary>Which decisions are routinely escalated too late—and which are escalated too often?</summary><p>The answer helps define the operating envelope and the thresholds that protect local speed.</p></details>
+        <details><summary>Where do customer urgency and internal capacity collide most often?</summary><p>This exposes where commitment confidence is most vulnerable and where constraint visibility matters.</p></details>
+        <details><summary>What execution risk worries the OPX leader that current dashboards do not reveal early enough?</summary><p>The answer should shape the first bounded pilot rather than forcing a generic scorecard.</p></details>
+        <details><summary>What must remain local, and what benefits from standardization?</summary><p>This protects judgment close to the work while creating one executive language for cross-boundary risk.</p></details>
+        <details><summary>At the end of year one, what would prove the Chief of Staff changed how the business runs?</summary><p>The answer should become the role's outcome scorecard—not an activity list.</p></details>
       </div>
     </section>
 
-    <section class="sources" aria-labelledby="sources-title">
-      <h2 id="sources-title">Research basis</h2>
-      <p>This candidate thesis uses public sources current through July 11, 2026. Company-specific internal recommendations are explicitly hypotheses for discovery.</p>
-      <ul>
-        <li><a href="https://careers.westinghousenuclear.com/job/Cranberry-Township-OPX-Chief-of-Staff-NC/1405207900/" target="_blank" rel="noopener">Westinghouse Careers · OPX Chief of Staff posting</a></li>
-        <li><a href="https://westinghousenuclear.com/operating-plants/" target="_blank" rel="noopener">Westinghouse · Operating Plants portfolio</a></li>
-        <li><a href="https://info.westinghousenuclear.com/news/westinghouse-announces-department-of-energy-partnership-to-jumpstart-large-scale-nuclear-supply-chain" target="_blank" rel="noopener">Westinghouse · DOE supply-chain partnership, June 23, 2026</a></li>
-        <li><a href="https://info.westinghousenuclear.com/news/westinghouse-establishes-standard-ap1000-plant-for-fleet-scale-deployment-in-u.s" target="_blank" rel="noopener">Westinghouse · Standard AP1000 reference plant, April 6, 2026</a></li>
-        <li><a href="https://info.westinghousenuclear.com/news/ten-unit-westinghouse-ap1000-fleet-deployment-will-create-more-than-1-trillion-in-u.s.-gdp" target="_blank" rel="noopener">Westinghouse · Ten-unit fleet economic impact study, March 11, 2026</a></li>
-        <li><a href="https://www.reuters.com/business/energy/westinghouse-megadeal-set-revitalize-nuclear-supply-chain--reeii-2026-01-26/" target="_blank" rel="noopener">Reuters Events · Nuclear supply-chain expansion context, January 26, 2026</a></li>
-      </ul>
+    <section class="final-cta" aria-labelledby="cta-title">
+      <div><p class="section-number">THE CANDIDATE ARGUMENT</p><h2 id="cta-title">Scale ambition with earlier visibility, explicit authority, and reusable learning.</h2></div>
+      <nav aria-label="Campaign documents"><a class="button primary" href="interview-brief.html">Read the interview brief</a><a href="resume.html">View resume</a><a href="cover-letter.html">View cover letter</a><a href="120-day-plan.html">View 120-day plan</a></nav>
     </section>
+
+    <section class="sources" aria-labelledby="sources-title"><h2 id="sources-title">Research basis</h2><p>Public sources reviewed through July 12, 2026. Internal-remit recommendations remain hypotheses for discovery.</p><ul><li><a href="https://careers.westinghousenuclear.com/job/Cranberry-Township-OPX-Chief-of-Staff-NC/1405207900/">Westinghouse Careers · OPX Chief of Staff posting</a></li><li><a href="https://westinghousenuclear.com/operating-plants/">Westinghouse · Operating Plants portfolio</a></li><li><a href="https://info.westinghousenuclear.com/news/westinghouse-announces-department-of-energy-partnership-to-jumpstart-large-scale-nuclear-supply-chain">Westinghouse · DOE supply-chain partnership</a></li><li><a href="https://info.westinghousenuclear.com/news/westinghouse-establishes-standard-ap1000-plant-for-fleet-scale-deployment-in-u.s">Westinghouse · Standard AP1000 reference</a></li></ul></section>
   </main>
 
-  <footer>
-    <div><strong>Russell Dudek</strong><span>Pittsburgh, Pennsylvania</span></div>
-    <nav aria-label="Footer navigation"><a href="resume.html">Resume</a><a href="cover-letter.html">Cover letter</a><a href="interview-brief.html">Interview brief</a></nav>
-  </footer>
+  <footer><div><strong>Russell Dudek</strong><span>Independent candidate work product · not affiliated with, authored by, approved by, or endorsed by Westinghouse.</span></div><nav><a href="resume.html">Resume</a><a href="cover-letter.html">Cover letter</a><a href="interview-brief.html">Interview brief</a><a href="120-day-plan.html">120-day plan</a></nav></footer>
   <script src="app.js"></script>
 </body>
 </html>

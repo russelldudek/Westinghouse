@@ -1,0 +1,44 @@
+{
+  "campaign": "Westinghouse OPX Chief of Staff",
+  "canonical_branch": "main",
+  "routes": [
+    "index.html",
+    "resume.html",
+    "cover-letter.html",
+    "interview-brief.html",
+    "120-day-plan.html"
+  ],
+  "source": [
+    "styles.css",
+    "brand-tokens.css",
+    "app.js",
+    "README.md",
+    "brand-intelligence.md",
+    "campaign-metadata.json",
+    "artifact-manifest.json"
+  ],
+  "brand_assets": [
+    "assets/brand/westinghouse-logo-blue.png",
+    "assets/brand/westinghouse-logo-white.png",
+    "assets/brand/westinghouse-logo-both-278x67.png",
+    "assets/brand/official-source-urls.txt",
+    "assets/brand/official-css-evidence.txt",
+    "assets/brand/asset-checksums.sha256"
+  ],
+  "company_assets": [
+    "assets/company/ap1000-pwr-circle.png",
+    "assets/company/westinghouse-facility.webp"
+  ],
+  "pdfs": [
+    "docs/russell-dudek-westinghouse-opx-chief-of-staff-resume.pdf",
+    "docs/russell-dudek-westinghouse-opx-chief-of-staff-cover-letter.pdf",
+    "docs/russell-dudek-westinghouse-opx-chief-of-staff-interview-brief.pdf",
+    "docs/russell-dudek-westinghouse-opx-chief-of-staff-120-day-plan.pdf"
+  ],
+  "audit_records": [
+    "canonical-alignment-audit.md",
+    "brand-fidelity-audit.md",
+    "campaign-completion-audit.md",
+    "deployment-proof.txt"
+  ]
+}

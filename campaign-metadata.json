@@ -1,13 +1,17 @@
 {
-  "suggested_chat_name": "Westinghouse – OPX Chief of Staff",
+  "suggested_chat_name": "Westinghouse - OPX Chief of Staff",
   "company": "Westinghouse Electric Company",
   "canonical_role_title": "OPX Chief of Staff",
   "location": "Cranberry Township, Pennsylvania",
   "campaign_repository": "https://github.com/russelldudek/Westinghouse",
   "repository_slug": "Westinghouse",
+  "publication_branch": "main",
   "job_posting": "https://careers.westinghousenuclear.com/job/Cranberry-Township-OPX-Chief-of-Staff-NC/1405207900/",
   "print_page_size": "US Letter",
   "campaign_thesis": "Make execution legible before it becomes urgent.",
   "operating_model": "Executive Operating Envelope",
-  "alignment_audit_date": "2026-07-11"
+  "candidate": "Russell Dudek",
+  "independent_candidate_work": true,
+  "brand_asset_package": "assets/brand/",
+  "audit_date": "2026-07-12"
 }
