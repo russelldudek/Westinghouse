@@ -19,9 +19,10 @@ jobs:
       - name: Validate payload bytes
         shell: bash
         run: |
-          set -u
+          set +e
           {
             date -u
+            echo "run: $GITHUB_RUN_ID"
             wc -c .roleforge-payload/chunk-*
             echo 'chunk checksums:'
             sha256sum .roleforge-payload/chunk-*
@@ -29,16 +30,16 @@ jobs:
             echo 'combined:'
             wc -c /tmp/source.b64
             sha256sum /tmp/source.b64
-            echo 'b334aedfc173965e29301dd496fd2800de9d709b37a9724fa1694c18e9c40a26  /tmp/source.b64' | sha256sum -c -
+            echo 'expected combined: b334aedfc173965e29301dd496fd2800de9d709b37a9724fa1694c18e9c40a26'
             base64 --decode /tmp/source.b64 > /tmp/source.tgz
-            echo 'base64 decode: success'
+            echo "base64 decode exit: $?"
             sha256sum /tmp/source.tgz
-            echo '0b4d125d6e640b633eae54eb6df595d47cc071c10c1df6010db23ed316b9785e  /tmp/source.tgz' | sha256sum -c -
+            echo 'expected archive: 0b4d125d6e640b633eae54eb6df595d47cc071c10c1df6010db23ed316b9785e'
             tar -tzf /tmp/source.tgz
-            echo 'tar validation: success'
+            echo "tar validation exit: $?"
           } > payload-diagnostic.txt 2>&1
           git config user.name 'RoleForge Payload Diagnostic'
           git config user.email 'actions@users.noreply.github.com'
           git add payload-diagnostic.txt
-          git commit -m 'Record verified RoleForge payload integrity'
+          git commit -m 'Record nonfatal RoleForge payload diagnostics'
           git push origin HEAD:main
