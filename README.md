@@ -36,3 +36,12 @@ Career facts are constrained to `russelldudek/roleforge` candidate evidence. The
 ## Publication and audit
 
 The static campaign is designed for GitHub Pages from `main` and `/ (root)`. Final audit records are committed alongside the campaign after rendered, PDF, main-branch, canonical-alignment, brand-fidelity, and deployment verification.
+
+## Final verified audit
+
+- Campaign state: complete
+- Audited source head: 
+- Live site: 
+- Live verification run: 
+- Canonical Alignment, Brand Fidelity, and Campaign Completion audits: passed
+

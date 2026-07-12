@@ -39,6 +39,8 @@
     "canonical-alignment-audit.md",
     "brand-fidelity-audit.md",
     "campaign-completion-audit.md",
+    "live-browser-audit.json",
+    "live-hash-verification.tsv",
     "deployment-proof.txt"
   ]
 }

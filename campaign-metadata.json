@@ -13,5 +13,9 @@
   "candidate": "Russell Dudek",
   "independent_candidate_work": true,
   "brand_asset_package": "assets/brand/",
-  "audit_date": "2026-07-12"
+  "audit_date": "2026-07-12",
+  "campaign_state": "complete",
+  "audited_source_head": "37ac7388a9e32c6fa838e526e25305dd90adabdd",
+  "live_site": "https://russelldudek.github.io/Westinghouse/",
+  "live_verification_run_id": "29197312859"
 }

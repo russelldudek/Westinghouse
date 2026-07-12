@@ -53,6 +53,8 @@
     "desktop: Failed to load resource: the server responded with a status of 404 ()"
   ],
   "pageErrors": [],
+  "httpErrors": [],
+  "nonBlockingFavicon404": false,
   "passed": true,
   "failures": []
 }
