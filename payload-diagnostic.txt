@@ -1,21 +1,30 @@
-Sun Jul 12 14:32:35 UTC 2026
+Sun Jul 12 14:39:09 UTC 2026
+run: 29196654827
 10000 .roleforge-payload/chunk-00
 10000 .roleforge-payload/chunk-01
 10000 .roleforge-payload/chunk-02
-10000 .roleforge-payload/chunk-03
+ 2500 .roleforge-payload/chunk-03-00
+ 2500 .roleforge-payload/chunk-03-01
+ 2500 .roleforge-payload/chunk-03-02
+ 2500 .roleforge-payload/chunk-03-03
  3972 .roleforge-payload/chunk-04
 43972 total
 chunk checksums:
 89af303ed7100ce982fd86aef89ba54eb570ff80aecf0db5883885c19522c6b9  .roleforge-payload/chunk-00
 5437fed153b4f00eb4dc1348c39df0f7a6927a4cd8b15511f96a3a337ab62d59  .roleforge-payload/chunk-01
 c73aa38a6887209deae577894cce7cd0fa149d7d41caf77ab3b1c2ab191e45bf  .roleforge-payload/chunk-02
-9dc4c2860ac3464515b2d62c2aaa0ae4392f1e58e4e504c7932fbe50e8f7ec37  .roleforge-payload/chunk-03
+1bf9d52a20fb088786243ea783cb04758a85b6304d2ce50602d3af9f610fad50  .roleforge-payload/chunk-03-00
+65a36b614739d072481fa5f15430376ab0201fad7f007d2cd91acba9d8ef209a  .roleforge-payload/chunk-03-01
+12ab2ad65c2128768a10c0cc63dbbe26dd220cbf4e89f0bd6972bc9561998f0c  .roleforge-payload/chunk-03-02
+e7e026e4b06ebfb3008fb2220ae2979f478ae998c022237e91d9f256d14dedef  .roleforge-payload/chunk-03-03
 0eb71a17a1cdfa5735bb8cb34242536ee026bd13d6468f319590cd70e2a8feb5  .roleforge-payload/chunk-04
 combined:
 43972 /tmp/source.b64
 af8440667d58f9b993f700d6aa0a5a6f649f717e9384cab64c58a6c95c77eaa8  /tmp/source.b64
-base64 decode: success
+expected combined: b334aedfc173965e29301dd496fd2800de9d709b37a9724fa1694c18e9c40a26
+base64 decode exit: 0
 aa40b47cc0ba69e311c79dc13a7c80c4a7663013ea5789d404b03b09d7e48f2a  /tmp/source.tgz
+expected archive: 0b4d125d6e640b633eae54eb6df595d47cc071c10c1df6010db23ed316b9785e
 index.html
 resume.html
 cover-letter.html
@@ -25,10 +34,10 @@ styles.css
 brand-tokens.css
 app.js
 tar: Skipping to next header
-gzip: stdin: invalid compressed data--crc error
 
+gzip: stdin: invalid compressed data--crc error
 
 gzip: stdin: invalid compressed data--length error
 tar: Child returned status 1
 tar: Error is not recoverable: exiting now
-tar validation: failure
+tar validation exit: 2
