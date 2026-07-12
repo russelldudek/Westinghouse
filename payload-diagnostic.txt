@@ -1,10 +1,16 @@
-Sun Jul 12 14:31:44 UTC 2026
+Sun Jul 12 14:32:35 UTC 2026
 10000 .roleforge-payload/chunk-00
 10000 .roleforge-payload/chunk-01
 10000 .roleforge-payload/chunk-02
 10000 .roleforge-payload/chunk-03
  3972 .roleforge-payload/chunk-04
 43972 total
+chunk checksums:
+89af303ed7100ce982fd86aef89ba54eb570ff80aecf0db5883885c19522c6b9  .roleforge-payload/chunk-00
+5437fed153b4f00eb4dc1348c39df0f7a6927a4cd8b15511f96a3a337ab62d59  .roleforge-payload/chunk-01
+c73aa38a6887209deae577894cce7cd0fa149d7d41caf77ab3b1c2ab191e45bf  .roleforge-payload/chunk-02
+9dc4c2860ac3464515b2d62c2aaa0ae4392f1e58e4e504c7932fbe50e8f7ec37  .roleforge-payload/chunk-03
+0eb71a17a1cdfa5735bb8cb34242536ee026bd13d6468f319590cd70e2a8feb5  .roleforge-payload/chunk-04
 combined:
 43972 /tmp/source.b64
 af8440667d58f9b993f700d6aa0a5a6f649f717e9384cab64c58a6c95c77eaa8  /tmp/source.b64
