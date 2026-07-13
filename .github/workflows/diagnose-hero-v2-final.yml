@@ -1,0 +1,77 @@
+name: Persist full hero v2 diagnostics
+
+on:
+  push:
+    paths:
+      - '.github/workflows/diagnose-hero-v2-final.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - run: python3 -m pip install --user playwright
+      - name: Run nonfatal full audit
+        shell: bash
+        env:
+          BASE_URL: https://russelldudek.github.io/Westinghouse/
+        run: |
+          export BROWSER=$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)
+          cat > /tmp/diag.py <<'PY'
+          import json, os, traceback
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          base=os.environ['BASE_URL']; browser_path=os.environ['BROWSER']; run=os.environ['GITHUB_RUN_ID']
+          report={'browser':browser_path,'runId':run,'viewports':{},'reducedMotion':{},'failures':[],'exception':None}
+          try:
+              with sync_playwright() as p:
+                  browser=p.chromium.launch(executable_path=browser_path,headless=True,args=['--no-sandbox'])
+                  for name,(width,height) in {'desktop':(1440,900),'laptop':(1280,800),'tablet':(768,1024),'mobile':(390,844)}.items():
+                      context=browser.new_context(viewport={'width':width,'height':height}); page=context.new_page()
+                      page.goto(f'{base}?diag={run}-{name}',wait_until='domcontentloaded',timeout=60000)
+                      page.wait_for_selector('.loop-segment',state='attached',timeout=30000)
+                      counts={'nodes':page.locator('.system-node').count(),'segments':page.locator('.loop-segment').count(),'arrows':page.locator('.loop-arrow').count(),'packets':page.locator('.flow-packet').count()}
+                      data={'counts':counts,'overflow':page.evaluate('document.documentElement.scrollWidth-document.documentElement.clientWidth'),'logo':page.locator('.company-lockup img').is_visible(),'qualifier':page.locator('.company-lockup span').is_visible(),'states':{}}
+                      if counts!={'nodes':4,'segments':4,'arrows':4,'packets':2}: report['failures'].append(f'{name}: counts {counts}')
+                      if data['overflow']!=0: report['failures'].append(f'{name}: overflow {data["overflow"]}')
+                      if not data['logo'] or not data['qualifier']: report['failures'].append(f'{name}: identity {data}')
+                      for scenario,(selector,expected) in {'capacity':('.loop-top','CONSTRAINED'),'decision':('.loop-right','AGING'),'learning':('.loop-bottom','RECURRING')}.items():
+                          try:
+                              button=page.locator(f'[data-scenario="{scenario}"]'); button.click(timeout=30000); page.wait_for_timeout(200)
+                              state=page.locator('#heroSystem').get_attribute('data-state'); pressed=button.get_attribute('aria-pressed'); stroke=page.locator(selector).evaluate('el=>getComputedStyle(el).stroke'); core=page.locator('#coreStatus').inner_text()
+                              data['states'][scenario]={'state':state,'pressed':pressed,'stroke':stroke,'core':core}
+                              compact=stroke.replace(' ','').lower()
+                              if state!=scenario or pressed!='true' or core!=expected: report['failures'].append(f'{name}: {scenario} state {data["states"][scenario]}')
+                              if '255,98,92' not in compact and '#ff625c' not in compact: report['failures'].append(f'{name}: {scenario} stroke {stroke}')
+                          except Exception as exc:
+                              data['states'][scenario]={'exception':repr(exc)}; report['failures'].append(f'{name}: {scenario} exception {exc!r}')
+                      report['viewports'][name]=data; context.close()
+                  context=browser.new_context(viewport={'width':1280,'height':800},reduced_motion='reduce'); page=context.new_page()
+                  page.goto(f'{base}?diag={run}-reduced',wait_until='domcontentloaded',timeout=60000); page.wait_for_selector('.loop-segment',state='attached',timeout=30000)
+                  page.locator('[data-scenario="capacity"]').click(timeout=30000); page.wait_for_timeout(100)
+                  report['reducedMotion']={'packet':page.locator('.flow-packet').first.evaluate('el=>getComputedStyle(el).display'),'loop':page.locator('.loop-flow').evaluate('el=>getComputedStyle(el).animationName'),'halo':page.locator('.node-constraint .node-halo').evaluate('el=>getComputedStyle(el).animationName'),'state':page.locator('#heroSystem').get_attribute('data-state')}
+                  r=report['reducedMotion']
+                  if r!={'packet':'none','loop':'none','halo':'none','state':'capacity'}: report['failures'].append(f'reduced motion {r}')
+                  context.close(); browser.close()
+          except Exception as exc:
+              report['exception']=repr(exc); report['traceback']=traceback.format_exc(); report['failures'].append(f'unhandled {exc!r}')
+          report['passed']=not report['failures']
+          Path('hero-v2-full-diagnostic.json').write_text(json.dumps(report,indent=2)+'\n')
+          print(json.dumps(report,indent=2))
+          PY
+          python3 /tmp/diag.py
+      - name: Commit diagnostic report
+        if: always()
+        shell: bash
+        run: |
+          git config user.name 'RoleForge Hero Diagnostic'
+          git config user.email 'actions@users.noreply.github.com'
+          git add hero-v2-full-diagnostic.json
+          git commit -m 'Record full hero v2 state diagnostics' || true
+          git push origin HEAD:main
