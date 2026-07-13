@@ -1,0 +1,146 @@
+{
+  "browser": "/usr/bin/google-chrome",
+  "runId": "29221420405",
+  "viewports": {
+    "desktop": {
+      "counts": {
+        "nodes": 4,
+        "segments": 4,
+        "arrows": 4,
+        "packets": 2
+      },
+      "overflow": 0,
+      "logo": true,
+      "qualifier": true,
+      "states": {
+        "capacity": {
+          "state": "capacity",
+          "pressed": "true",
+          "stroke": "rgba(243, 105, 102, 0.99)",
+          "core": "CONSTRAINED"
+        },
+        "decision": {
+          "state": "decision",
+          "pressed": "true",
+          "stroke": "rgba(239, 107, 105, 0.984)",
+          "core": "AGING"
+        },
+        "learning": {
+          "state": "learning",
+          "pressed": "true",
+          "stroke": "rgba(239, 107, 105, 0.984)",
+          "core": "RECURRING"
+        }
+      },
+      "pageErrors": [],
+      "httpErrors": []
+    },
+    "laptop": {
+      "counts": {
+        "nodes": 4,
+        "segments": 4,
+        "arrows": 4,
+        "packets": 2
+      },
+      "overflow": 0,
+      "logo": true,
+      "qualifier": true,
+      "states": {
+        "capacity": {
+          "state": "capacity",
+          "pressed": "true",
+          "stroke": "rgba(239, 107, 105, 0.984)",
+          "core": "CONSTRAINED"
+        },
+        "decision": {
+          "state": "decision",
+          "pressed": "true",
+          "stroke": "rgba(239, 107, 105, 0.984)",
+          "core": "AGING"
+        },
+        "learning": {
+          "state": "learning",
+          "pressed": "true",
+          "stroke": "rgba(239, 107, 105, 0.984)",
+          "core": "RECURRING"
+        }
+      },
+      "pageErrors": [],
+      "httpErrors": []
+    },
+    "tablet": {
+      "counts": {
+        "nodes": 4,
+        "segments": 4,
+        "arrows": 4,
+        "packets": 2
+      },
+      "overflow": 0,
+      "logo": true,
+      "qualifier": true,
+      "states": {
+        "capacity": {
+          "state": "capacity",
+          "pressed": "true",
+          "stroke": "rgba(243, 105, 102, 0.99)",
+          "core": "CONSTRAINED"
+        },
+        "decision": {
+          "state": "decision",
+          "pressed": "true",
+          "stroke": "rgba(243, 105, 102, 0.99)",
+          "core": "AGING"
+        },
+        "learning": {
+          "state": "learning",
+          "pressed": "true",
+          "stroke": "rgba(243, 105, 102, 0.99)",
+          "core": "RECURRING"
+        }
+      },
+      "pageErrors": [],
+      "httpErrors": []
+    },
+    "mobile": {
+      "counts": {
+        "nodes": 4,
+        "segments": 4,
+        "arrows": 4,
+        "packets": 2
+      },
+      "overflow": 0,
+      "logo": true,
+      "qualifier": true,
+      "states": {
+        "capacity": {
+          "state": "capacity",
+          "pressed": "true",
+          "stroke": "rgba(243, 105, 102, 0.99)",
+          "core": "CONSTRAINED"
+        },
+        "decision": {
+          "state": "decision",
+          "pressed": "true",
+          "stroke": "rgba(243, 105, 102, 0.99)",
+          "core": "AGING"
+        },
+        "learning": {
+          "state": "learning",
+          "pressed": "true",
+          "stroke": "rgba(243, 105, 102, 0.99)",
+          "core": "RECURRING"
+        }
+      },
+      "pageErrors": [],
+      "httpErrors": []
+    }
+  },
+  "reducedMotion": {
+    "packet": "none",
+    "loop": "none",
+    "halo": "none",
+    "state": "capacity"
+  },
+  "failures": [],
+  "exception": null
+}
