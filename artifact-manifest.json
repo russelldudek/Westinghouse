@@ -10,6 +10,7 @@
   ],
   "source": [
     "styles.css",
+    "hero-envelope-v2.css",
     "brand-tokens.css",
     "app.js",
     "README.md",
