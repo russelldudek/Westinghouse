@@ -1,0 +1,68 @@
+name: Diagnose contact-complete documents
+
+on:
+  push:
+    paths:
+      - '.github/workflows/diagnose-contact-documents.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Render and inspect without failing
+        shell: bash
+        run: |
+          set +e
+          command -v pdfinfo >/dev/null || { sudo apt-get update; sudo apt-get install -y poppler-utils; }
+          BROWSER=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/http.log 2>&1 &
+          SERVER_PID=$!
+          sleep 2
+          mkdir -p /tmp/docs
+          "$BROWSER" --headless --no-sandbox --disable-gpu --hide-scrollbars --no-pdf-header-footer --virtual-time-budget=3000 --print-to-pdf=/tmp/docs/resume.pdf http://127.0.0.1:8765/resume.html > /tmp/resume-render.log 2>&1
+          resume_render=$?
+          "$BROWSER" --headless --no-sandbox --disable-gpu --hide-scrollbars --no-pdf-header-footer --virtual-time-budget=3000 --print-to-pdf=/tmp/docs/cover.pdf http://127.0.0.1:8765/cover-letter.html > /tmp/cover-render.log 2>&1
+          cover_render=$?
+          kill $SERVER_PID || true
+          resume_pages=$(pdfinfo /tmp/docs/resume.pdf 2>/dev/null | awk '/^Pages:/ {print $2}')
+          cover_pages=$(pdfinfo /tmp/docs/cover.pdf 2>/dev/null | awk '/^Pages:/ {print $2}')
+          pdftotext -layout /tmp/docs/resume.pdf /tmp/resume.txt 2>/tmp/resume-text.err
+          resume_text=$?
+          pdftotext -layout /tmp/docs/cover.pdf /tmp/cover.txt 2>/tmp/cover-text.err
+          cover_text=$?
+          tr -d '\r\n ' < /tmp/resume.txt > /tmp/resume.compact 2>/dev/null
+          tr -d '\r\n ' < /tmp/cover.txt > /tmp/cover.compact 2>/dev/null
+          {
+            echo "run_id=$GITHUB_RUN_ID"
+            echo "browser=$BROWSER"
+            echo "resume_render_exit=$resume_render"
+            echo "cover_render_exit=$cover_render"
+            echo "resume_pages=${resume_pages:-missing}"
+            echo "cover_pages=${cover_pages:-missing}"
+            echo "resume_text_exit=$resume_text"
+            echo "cover_text_exit=$cover_text"
+            for value in '412.287.8640' 'russelldudek@gmail.com' 'linkedin.com/in/russelldudek' 'russelldudek.github.io/Westinghouse/'; do
+              echo "VALUE=$value"
+              echo "resume_count=$(grep -Fo "$value" /tmp/resume.compact 2>/dev/null | wc -l)"
+              echo "cover_count=$(grep -Fo "$value" /tmp/cover.compact 2>/dev/null | wc -l)"
+            done
+            echo '--- resume render log ---'; cat /tmp/resume-render.log
+            echo '--- cover render log ---'; cat /tmp/cover-render.log
+            echo '--- resume text ---'; cat /tmp/resume.txt
+            echo '--- cover text ---'; cat /tmp/cover.txt
+          } > contact-generation-diagnostic.txt
+      - name: Commit diagnostic
+        shell: bash
+        run: |
+          git config user.name 'RoleForge Contact Diagnostic'
+          git config user.email 'actions@users.noreply.github.com'
+          git add contact-generation-diagnostic.txt
+          git commit -m 'Record contact document generation diagnostic'
+          git push origin HEAD:main
