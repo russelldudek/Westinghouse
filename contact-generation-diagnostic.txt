@@ -1,0 +1,281 @@
+run_id=29221753426
+browser=/usr/bin/google-chrome
+resume_render_exit=0
+cover_render_exit=0
+resume_pages=2
+cover_pages=1
+resume_text_exit=0
+cover_text_exit=0
+VALUE=412.287.8640
+resume_count=3
+cover_count=1
+VALUE=russelldudek@gmail.com
+resume_count=3
+cover_count=1
+VALUE=linkedin.com/in/russelldudek
+resume_count=3
+cover_count=1
+VALUE=russelldudek.github.io/Westinghouse/
+resume_count=2
+cover_count=1
+--- resume render log ---
+[2823:2848:0713/032835.368008:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2823:2848:0713/032835.372907:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2823:2848:0713/032836.489397:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2823:2848:0713/032836.787588:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2823:2823:0713/032838.208711:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2823:2823:0713/032838.208767:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2823:2848:0713/032838.208818:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2823:2848:0713/032838.208844:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2823:2823:0713/032838.218795:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2823:2823:0713/032838.272147:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2823:2823:0713/032838.534277:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2823:2823:0713/032838.540330:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2823:2848:0713/032838.540629:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2823:2823:0713/032838.645414:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.Properties.GetAll: object_path= /org/freedesktop/UPower/devices/DisplayDevice: org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.UPower was not provided by any .service files
+[2823:2823:0713/032838.646087:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2823:2848:0713/032838.646159:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2823:2823:0713/032838.725221:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2823:2848:0713/032838.725523:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2823:2823:0713/032838.840599:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+129077 bytes written to file /tmp/docs/resume.pdf
+--- cover render log ---
+[2994:3015:0713/032840.484494:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2994:3015:0713/032840.485031:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2994:3015:0713/032840.493830:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2994:3015:0713/032840.520983:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2994:2994:0713/032840.578510:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2994:3015:0713/032840.578589:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2994:2994:0713/032840.578635:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2994:3015:0713/032840.578682:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2994:2994:0713/032840.578933:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2994:2994:0713/032840.583556:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2994:2994:0713/032840.611127:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2994:2994:0713/032840.611293:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2994:3015:0713/032840.612185:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2994:2994:0713/032840.634449:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2994:2994:0713/032840.634529:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.Properties.GetAll: object_path= /org/freedesktop/UPower/devices/DisplayDevice: org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.UPower was not provided by any .service files
+[2994:3015:0713/032840.637421:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2994:2994:0713/032840.652071:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+[2994:3015:0713/032840.652151:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[2994:2994:0713/032840.679278:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+79695 bytes written to file /tmp/docs/cover.pdf
+--- resume text ---
+                                                                                                                                         Candidate campaign by Russell Dudek
+                                                                                                                                      OPX Chief of Staff · independent work product
+
+
+
+
+Russell Dudek                                                                                                                                               Pittsburgh, Pennsylvania
+                                                                                                                                                                         412.287.8640
+EXECUTIVE OPERATIONS LEADER · HIGH-RELIABILITY SYSTEMS · CROSS-FUNCTIONAL                                                                                     russelldudek@gmail.com
+                                                                                                                                                          linkedin.com/in/russelldudek
+EXECUTION                                                                                                                                      russelldudek.github.io/Westinghouse/
+
+
+Operator-technologist who makes complex work visible, connects technical and business teams, and builds operating mechanisms that turn
+emerging technology into adopted, measurable outcomes. Leadership experience spans high-reliability electronics, 24/7 scaled operations,
+regulated autonomous systems, industrial logistics, robotics, machine vision, quality systems, and AI-enabled workflow transformation.
+
+
+    Executive Operating Cadence             High-Reliability Operations   Decision & Escalation Architecture     Engineering–Operations Integration
+
+    Quality Systems & Root Cause             Cross-Functional Dependency Management        AI-Enabled Workflow Design      Change Adoption
+
+
+
+LEADERSHIP EXPERIENCE
+
+Vape-Jet                                                                                                                                                               2025–Present
+
+Director of Operations
+    Lead AI-first operating transformation across production, purchasing, quality, customer success, support, engineering issue flow, ERP/Odoo, Jira, HubSpot, Slack,
+    telemetry, and AI-assisted workflows.
+    Connect factory, field, customer, and machine-fleet signals into prioritized work, earlier risk detection, cleaner handoffs, dashboards, standard work, training, and
+    accountability.
+    Operate in a software-enabled robotics and machine-vision environment with approximately 1,000 fielded robots informing support and operating feedback loops.
+
+
+Compunetics                                                                                                                                                               2000–2013
+
+Director of Operations and Engineering Management
+    Progressed through R&D program management, production management, strategic acquisition, operations management, and director-level leadership.
+    Led engineering, manufacturing, quality, customer delivery, and complex technical programs in advanced electronics and high-reliability environments.
+    Built quality systems, standard work, root-cause practices, performance measures, and process controls.
+    Collaborated with high-consequence customers and partners including DoD, CERN, Intel, and AMD; published industry articles, delivered technical talks, and
+    participated in the HyperTransport Consortium.
+
+Amazon                                                                                                                                                                    2014–2018
+
+Operations Management / Site Leader
+    Led launch and execution for Amazon Prime Pittsburgh in a 24/7 customer-backward operating environment supporting approximately five million second-day orders
+    annually.
+    Built leadership routines, labor planning, throughput visibility, escalation paths, standard work, and operating mechanisms.
+    Applied Lean and Gemba practices across safety, quality, throughput, customer experience, and team engagement.
+    Contributed to logistics innovation through Prime Air research and Amazon Flex geolocation concepts.
+
+
+ZeusVu                                                                                                                                                                    2018–2022
+
+Chief Pilot, Autonomous Systems and Aerial Data Operations
+    Led regulated drone operations across medical, energy, logistics, real-estate, and restricted-airspace contexts with a 100% safety record and no FAA incidents.
+    Developed TensorFlow-based concepts for automated aerial inventory and computer-vision-enabled field intelligence.
+    Designed medical drone delivery and chain-of-custody concepts connecting technology, risk, stakeholders, and governed execution.
+
+
+O P E R AT I N G M E C H A N I S M S R E L E VA N T T O T H E M A N D AT E
+
+
+  Visibility: commitment confidence, constraint aging, throughput, issue flow,                 Governance: thresholds, escalation routes, decision rights, standard work,
+  and decision logs.                                                                           and root cause.
+
+
+  Learning: recurring-failure analysis, reusable standards, planning                           Adoption: frontline-informed design, trusted-source reuse, training,
+  assumptions, and closed-loop verification.                                                   accountability, and meeting-burden reduction.
+
+
+
+
+Role-aligned for Westinghouse OPX Chief of Staff candidacy                                                                                                                 Page 1 of 2
+                                                                                                                                                   Candidate campaign by Russell Dudek
+                                                                                                                                                OPX Chief of Staff · independent work product
+
+
+
+
+Russell Dudek
+                                                                                                                                                                      Pittsburgh, Pennsylvania
+                                                                                                                                                                                   412.287.8640
+                                                                                                                                                                        russelldudek@gmail.com
+                                                                                                                                                                    linkedin.com/in/russelldudek
+COMPLEMENTARY LEADERSHIP DEPTH                                                                                                                           russelldudek.github.io/Westinghouse/
+
+
+ADDITIONAL EXPERIENCE
+
+DudeWorth                                                                                                                                                                        2017–Present
+
+Founder / AI and Automation Advisor
+    Develop AI-readiness and opportunity frameworks assessing value, feasibility, data readiness, governance, adoption burden, reuse, and time-to-value.
+    Design agentic workflow patterns using structured context, retrieval, AI agents, human judgment, escalation, decision records, evaluation, and governance rails.
+    Advise on AI-enabled operations, logistics technology, warehouse automation, AMRs, ASRS, cobots, transportation systems, network analysis, and workflow design.
+
+
+Cardinal Building Products                                                                                                                                                          2021–2023
+
+Regional Director
+    Built the company’s first remote regional operation and modernized distributed customer, CRM, commercial, fulfillment, logistics, digital marketing, SEO, and online-
+    buying workflows.
+    Advanced AI-enhanced transportation-management and route-planning concepts.
+
+
+
+LEADERSHIP & CIVIC WORK                                                                               E D U C AT I O N & C R E D E N T I A L S
+
+Enviro Social Capital                                                                  2014–2017          University of Pittsburgh · Bachelor of Science
+Chairman of the Board                                                                                     IBM Enterprise Design Thinking Practitioner
+                                                                                                          Six Sigma Certification
+    Co-founded and led a public-private impact initiative focused on sustainable
+                                                                                                          OSHA 10
+    infrastructure, green finance, and civic transformation.
+    Helped shape and evaluate a $200 million Social Impact Bond feasibility
+    concept for Pittsburgh sewage and green-infrastructure improvement.
+                                                                                                      T E C H N I C A L & O P E R AT I N G T O O L K I T
+
+
+                                                                                       2012–2016      Agentic AI · LLM workflows · RAG patterns · Human-in-the-loop design · Python ·
+IEEE
+                                                                                                      SQL · JavaScript · TensorFlow · Tableau · ERP/Odoo workflows · Jira ·
+CMPT and EDS Pittsburgh Chapter Chair
+                                                                                                      Confluence · HubSpot · Slack · GIS and mapping workflows
+    Led regional technology programming connecting industry, academia, STEM
+    outreach, electronics, manufacturing, and emerging technology.
+                                                                                                      ROLE-ALIGNED THROUGH-LINE
+    Organized conferences, seminars, business tours, and technical programming.
+
+                                                                                                      High-reliability technical operations → scaled customer-backward execution →
+                                                                                                      regulated autonomous systems → distributed operations → AI-enabled robotics
+                                                                                                      transformation. The connecting work: visibility, decision quality, operating cadence,
+                                                                                                      standards, escalation, and adoption.
+
+
+                                                                                                      E V I D E N C E B O U N D A RY
+
+                                                                                                      No claim of direct nuclear-industry experience. The candidacy is based on
+                                                                                                      adjacent high-consequence operating experience and verified transferability.
+
+
+
+R O L E - R E L E VA N C E M A P
+
+
+  Executive coherence                                                  Technical consequence                                        AI and workflow leverage
+  Vape-Jet + Amazon                                                    Compunetics + ZeusVu                                         DudeWorth + Vape-Jet
+
+  Operating cadence, cross-functional visibility,                      High-reliability systems, quality controls, regulated        Agentic workflow patterns, human judgment,
+  escalation, and adoption.                                            execution, and authority boundaries.                         evaluation, governance, and real operating work.
+
+
+
+   Transfer boundary: This resume does not claim direct nuclear-industry experience. It presents verified adjacent evidence in high-reliability operations, regulated execution, quality
+   systems, executive cadence, and cross-functional mechanism building.
+
+
+
+
+Russell Dudek · 412.287.8640 · russelldudek@gmail.com · linkedin.com/in/russelldudek                                                                                                 Page 2 of 2
+--- cover text ---
+                                                                                                                   Candidate campaign by Russell Dudek
+                                                                                                                OPX Chief of Staff · independent work product
+
+
+
+
+Russell Dudek
+                                                                                                                                      Pittsburgh, Pennsylvania
+                                                                                                                                                   412.287.8640
+                                                                                                                                        russelldudek@gmail.com
+                                                                                                                                    linkedin.com/in/russelldudek
+OPX CHIEF OF STAFF CANDIDACY                                                                                             russelldudek.github.io/Westinghouse/
+
+
+
+July 12, 2026
+
+Hiring Team
+Westinghouse Electric Company
+Cranberry Township, Pennsylvania
+
+
+
+Scaling ambition requires a stronger operating envelope.
+Westinghouse is entering a moment when the opportunity is obvious and the operating burden is easy to underestimate. Publicly, the company is
+advancing fleet-scale AP1000 deployment, long-lead supply-chain investment, and a broad operating-plant portfolio spanning engineering, outages,
+parts, digital optimization, I&C, staffing, manufacturing, and long-term operations. In that environment, a Chief of Staff can create disproportionate
+value by helping the business see commitments, constraints, and decisions early enough to act—without turning executive cadence into more
+bureaucracy.
+
+That is work I have repeatedly done from different operating positions. At Compunetics, I led engineering, manufacturing, quality, customer
+delivery, and complex technical programs in advanced electronics and high-reliability environments. At Amazon, I led launch and execution in a
+24/7 customer-backward system supporting approximately five million second-day orders annually, building the routines, visibility, escalation paths,
+and standard work required to keep scale from becoming noise. Today at Vape-Jet, I connect production, quality, customer, field, engineering, ERP,
+issue-flow, telemetry, and AI-assisted workflows into a more coherent operating system.
+
+I have not spent my career inside a nuclear OEM or utility, and I would not pretend otherwise. My case is transferability: high-consequence
+technical execution, quality discipline, regulated operations, cross-functional dependency management, and the ability to make complex work
+legible to operators and executives. Nuclear expertise should remain with nuclear experts. My contribution would be to make those experts easier to
+hear at the right moment, clarify where decisions belong, surface systemic risk earlier, and convert repeated recovery into better mechanisms.
+
+My candidate thesis is an Executive Operating Envelope: a practical system linking a commitment map, constraint ledger, decision architecture,
+and learning registry. The point is not a new dashboard. It is to help leaders distinguish normal variance from emerging systemic risk, allocate scarce
+expertise deliberately, and retire reporting that consumes attention without changing a decision.
+
+I would welcome the opportunity to pressure-test that thesis against the real OPX operating context. The independent candidate vision makes that
+reasoning visible through the operating model, evidence map, strongest objection, executive questions, and a 120-day entry plan designed to learn
+before prescribing.
+
+
+Carpe diem,
+Russell Dudek
+
