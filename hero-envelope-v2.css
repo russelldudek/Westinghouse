@@ -45,7 +45,19 @@
 @keyframes operating-loop-travel{to{stroke-dashoffset:-64}}
 @keyframes node-warning{0%,100%{transform:scale(.94);opacity:.38}50%{transform:scale(1.08);opacity:.9}}
 @keyframes scenario-settle{0%{transform:scale(.94);opacity:.72}60%{transform:scale(1.035);opacity:1}100%{transform:scale(1)}}
+@media(max-width:920px){
+  .site-header .company-lockup{gap:10px;max-width:calc(100% - 54px)}
+  .site-header .company-lockup img{width:122px}
+  .site-header .company-lockup span{display:flex;min-width:0;border-left:1px solid var(--brand-line);padding-left:10px}
+  .site-header .company-lockup strong{font-size:.62rem;line-height:1.15;white-space:normal}
+  .site-header .company-lockup small{font-size:.56rem;line-height:1.2}
+}
 @media(max-width:680px){
+  .site-header .company-lockup{gap:8px}
+  .site-header .company-lockup img{width:105px}
+  .site-header .company-lockup span{padding-left:8px;max-width:160px}
+  .site-header .company-lockup strong{font-size:.55rem}
+  .site-header .company-lockup small{font-size:.5rem}
   .hero-system .attention-strip{grid-template-columns:1fr;padding:12px 13px;gap:6px}
   .hero-system .system-node .node-label{font-size:14px}
   .hero-system .loop-track{stroke-width:10}
