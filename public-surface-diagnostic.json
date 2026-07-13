@@ -1,0 +1,19 @@
+{
+  "finding_count": 3,
+  "findings": [
+    {
+      "surface": "text",
+      "path": "interview-brief.html",
+      "line": 5
+    },
+    {
+      "surface": "text",
+      "path": "brand-intelligence.md",
+      "line": 17
+    },
+    {
+      "surface": "pdf_text_or_metadata",
+      "path": "docs/russell-dudek-westinghouse-opx-chief-of-staff-interview-brief.pdf"
+    }
+  ]
+}
