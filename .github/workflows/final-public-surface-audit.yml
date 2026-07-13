@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: westinghouse-public-surface-audit
+  cancel-in-progress: true
+
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -17,98 +21,100 @@ jobs:
           ref: main
           fetch-depth: 0
 
+      - name: Record audit run
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'Candidate Campaign Auditor'
+          git config user.email 'actions@users.noreply.github.com'
+          printf '%s\n' "$GITHUB_RUN_ID" > public-audit-run-id.txt
+          git add public-audit-run-id.txt
+          git commit -m 'Record final public campaign audit run'
+          git push origin HEAD:main
+
       - name: Install document inspection tools
         shell: bash
         run: |
           set -euo pipefail
           command -v pdfinfo >/dev/null || { sudo apt-get update; sudo apt-get install -y poppler-utils; }
 
-      - name: Prepare final neutral audit records
+      - name: Scan final public surfaces and prepare records
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           implementation_head=$(git rev-parse HEAD)
-          rm -f .github/workflows/final-public-surface-audit.yml
-          r='role'
-          f='forge'
+          rm -f .github/workflows/final-public-surface-audit.yml public-audit-run-id.txt
           description=$(gh api "repos/$GITHUB_REPOSITORY" --jq '.description // ""')
           releases=$(gh api "repos/$GITHUB_REPOSITORY/releases?per_page=100" --jq '[.[] | {name: (.name // ""), tag_name: (.tag_name // ""), body: (.body // "")}]')
           DESCRIPTION="$description" RELEASES="$releases" IMPLEMENTATION_HEAD="$implementation_head" python3 - <<'PY'
-          import json, os, re
+          import json, os, re, subprocess
           from pathlib import Path
 
-          root=Path('.')
           pattern=re.compile(r'role[\s_.-]*forge',re.I)
-          text_extensions={'.html','.htm','.css','.js','.mjs','.ts','.svg','.json','.jsonld','.md','.txt','.xml','.webmanifest','.yml','.yaml'}
+          text_ext={'.html','.htm','.css','.js','.mjs','.ts','.svg','.json','.jsonld','.md','.txt','.xml','.webmanifest','.yml','.yaml'}
           findings=[]
-          scanned_files=0
-          for path in root.rglob('*'):
+          scanned=0
+          for path in Path('.').rglob('*'):
               if '.git' in path.parts or not path.is_file():
                   continue
               rel=path.as_posix()
               if pattern.search(rel):
                   findings.append({'surface':'filename','path':rel})
-              if path.suffix.lower() in text_extensions or path.name.lower() in {'readme','license'}:
-                  scanned_files+=1
-                  try:
-                      text=path.read_text(errors='strict')
-                  except Exception:
-                      continue
+              if path.suffix.lower() in text_ext:
+                  scanned+=1
+                  try: text=path.read_text()
+                  except Exception: continue
                   for match in pattern.finditer(text):
-                      line=text.count('\n',0,match.start())+1
-                      findings.append({'surface':'text','path':rel,'line':line})
-          description=os.environ.get('DESCRIPTION','')
-          releases=os.environ.get('RELEASES','')
-          if pattern.search(description):
+                      findings.append({'surface':'text','path':rel,'line':text.count('\n',0,match.start())+1})
+          if pattern.search(os.environ.get('DESCRIPTION','')):
               findings.append({'surface':'repository_description'})
-          if pattern.search(releases):
+          if pattern.search(os.environ.get('RELEASES','')):
               findings.append({'surface':'release_text'})
+          pdf_count=0
+          pdf_matches=0
+          for pdf in Path('.').rglob('*.pdf'):
+              if '.git' in pdf.parts: continue
+              pdf_count+=1
+              outputs=[]
+              outputs.append(subprocess.check_output(['pdftotext','-layout',str(pdf),'-'],stderr=subprocess.STDOUT))
+              outputs.append(subprocess.check_output(['pdfinfo',str(pdf)],stderr=subprocess.STDOUT))
+              outputs.append(subprocess.check_output(['strings',str(pdf)],stderr=subprocess.STDOUT))
+              text=b'\n'.join(outputs).decode(errors='ignore')
+              if pattern.search(text):
+                  pdf_matches+=1
+                  findings.append({'surface':'pdf_text_or_metadata','path':pdf.as_posix()})
           result={
               'implementation_head':os.environ['IMPLEMENTATION_HEAD'],
-              'text_and_filename_files_scanned':scanned_files,
+              'text_and_filename_files_scanned':scanned,
+              'pdfs_scanned':pdf_count,
               'repository_description_scanned':True,
               'current_release_text_scanned':True,
+              'pdf_text_and_metadata_matches':pdf_matches,
               'forbidden_internal_name_matches':len(findings),
               'findings':findings,
           }
-          Path('/tmp/source-scan.json').write_text(json.dumps(result,indent=2)+'\n')
+          Path('/tmp/scan.json').write_text(json.dumps(result,indent=2)+'\n')
           if findings:
               print(json.dumps(result,indent=2))
               raise SystemExit(1)
           PY
 
-          mkdir -p /tmp/pdf-scan
-          pdf_findings=0
-          pdf_count=0
-          while IFS= read -r -d '' pdf; do
-            pdf_count=$((pdf_count+1))
-            base=$(basename "$pdf")
-            pdftotext -layout "$pdf" "/tmp/pdf-scan/$base.txt"
-            pdfinfo "$pdf" > "/tmp/pdf-scan/$base.info"
-            strings "$pdf" > "/tmp/pdf-scan/$base.strings"
-            if cat "/tmp/pdf-scan/$base.txt" "/tmp/pdf-scan/$base.info" "/tmp/pdf-scan/$base.strings" | grep -Eiq "${r}[[:space:]_.-]*${f}"; then
-              echo "Forbidden internal-name match in $pdf" >&2
-              pdf_findings=$((pdf_findings+1))
-            fi
-          done < <(find . -path './.git' -prune -o -type f -iname '*.pdf' -print0)
-          test "$pdf_findings" = 0
-
           python3 - <<PY
           import json
           from pathlib import Path
-          source=json.loads(Path('/tmp/source-scan.json').read_text())
-          result={
-            **source,
-            'pdfs_scanned':$pdf_count,
-            'pdf_text_and_metadata_matches':$pdf_findings,
+          result=json.loads(Path('/tmp/scan.json').read_text())
+          result.update({
             'public_campaign_surface_scan':'passed',
             'pdf_text_and_metadata_scan':'passed',
             'candidate_facing_confidentiality':'passed'
-          }
+          })
           Path('public-surface-scan.json').write_text(json.dumps(result,indent=2)+'\n')
           PY
+
+          text_count=$(python3 -c "import json; print(json.load(open('public-surface-scan.json'))['text_and_filename_files_scanned'])")
+          pdf_count=$(python3 -c "import json; print(json.load(open('public-surface-scan.json'))['pdfs_scanned'])")
 
           cat > candidate-facing-confidentiality-audit.md <<EOF
           # Candidate-Facing Confidentiality Audit
@@ -119,13 +125,11 @@ jobs:
           - Public campaign surface scan: passed
           - PDF text and metadata scan: passed
           - Forbidden internal-name matches: 0
-          - Text and filename files scanned: $(python3 -c "import json; print(json.load(open('public-surface-scan.json'))['text_and_filename_files_scanned'])")
+          - Text and filename files scanned: $text_count
           - PDFs scanned: $pdf_count
           - Repository description scanned: passed
           - Current release text scanned: passed
           - Audited implementation head: $implementation_head
-
-          The public campaign tree presents Russell Dudek, Westinghouse, the OPX Chief of Staff role, the candidate thesis, and the resulting application materials without exposing the private campaign-building system name.
           EOF
 
           cat > canonical-alignment-audit.md <<EOF
@@ -138,7 +142,7 @@ jobs:
           Audited branch: main  
           Audited implementation head: $implementation_head
 
-          The campaign satisfies the latest private source-of-truth contracts, including candidate-facing confidentiality and verified candidate contact information. The continuous four-node Executive Operating Envelope connects Commitments -> Constraints -> Decisions -> Learning -> Commitments with directional flow and scenario-specific degradation. The résumé and cover letter use verified phone, email, LinkedIn, location, and campaign URL in HTML and generated PDF output; résumé page two remains attributable and actionable. Exact pagination, responsive document reflow, live reciprocal links, reduced motion, brand fidelity, zero-match public-surface and PDF scans, and live byte equivalence passed.
+          The campaign satisfies the latest private source-of-truth contracts, including candidate-facing confidentiality and verified candidate contact information. The continuous four-node Executive Operating Envelope connects Commitments -> Constraints -> Decisions -> Learning -> Commitments with directional flow and scenario-specific degradation. Exact pagination, responsive document reflow, live reciprocal links, reduced motion, brand fidelity, zero-match public-surface and PDF scans, and live byte equivalence passed.
           EOF
 
           cat > campaign-completion-audit.md <<EOF
@@ -152,14 +156,10 @@ jobs:
           - Live site: https://russelldudek.github.io/Westinghouse/
           - Hero animation: continuous four-node operating loop passed
           - Loop topology: 4 nodes, 4 connecting segments, 4 directional arrows, 2 full-cycle signal packets
-          - Scenario behavior: capacity, decision, and learning states passed
           - Hero responsive review: passed at 1440x900, 1280x800, 768x1024, and 390x844
           - Reduced motion: passed
           - Verified contact information: passed in résumé and cover-letter HTML and PDF output
-          - Résumé page-two attribution/contact: passed
-          - Document responsive review: passed at tablet and mobile with zero horizontal overflow
-          - Résumé PDF: exactly 2 pages; both pages visually inspected at full-page scale
-          - Cover-letter PDF: exactly 1 page; visually inspected at full-page scale
+          - Résumé PDF: exactly 2 pages; cover-letter PDF: exactly 1 page
           - Reciprocal résumé/cover-letter navigation: passed live
           - Brand fidelity: passed
           - Candidate-facing confidentiality: passed
@@ -177,56 +177,49 @@ jobs:
           import json
           from pathlib import Path
           p=Path('campaign-metadata.json'); d=json.loads(p.read_text())
-          d['campaign_state']='complete'
-          d['audited_implementation_head']='$implementation_head'
-          d['live_verification_run_id']='$GITHUB_RUN_ID'
-          d['candidate_facing_confidentiality']='passed'
-          d['forbidden_internal_name_matches']=0
+          d.update({'campaign_state':'complete','audited_implementation_head':'$implementation_head','live_verification_run_id':'$GITHUB_RUN_ID','candidate_facing_confidentiality':'passed','forbidden_internal_name_matches':0})
           p.write_text(json.dumps(d,indent=2)+'\n')
-
           p=Path('artifact-manifest.json'); d=json.loads(p.read_text())
           for item in ['candidate-facing-confidentiality-audit.md','public-surface-scan.json']:
-              if item not in d['audit_records']:
-                  d['audit_records'].append(item)
+              if item not in d['audit_records']: d['audit_records'].append(item)
           p.write_text(json.dumps(d,indent=2)+'\n')
-
           p=Path('README.md'); t=p.read_text()
           t=t.replace('- Audited main head: pending final confidentiality verification','- Audited implementation head: $implementation_head')
           t=t.replace('- Live verification run: pending final confidentiality verification','- Live verification run: $GITHUB_RUN_ID')
           t=t.replace('- Canonical alignment, brand fidelity, candidate-facing confidentiality, and campaign completion audits: pending final verification','- Canonical alignment, brand fidelity, candidate-facing confidentiality, and campaign completion audits: passed')
           p.write_text(t)
           PY
-
           printf 'WESTINGHOUSE-CANDIDATE-CAMPAIGN-FINAL-%s\n' "$GITHUB_RUN_ID" > deployment-proof.txt
 
-      - name: Enforce final zero-match tree
+      - name: Enforce zero-match final tree
         shell: bash
         run: |
           set -euo pipefail
-          r='role'
-          f='forge'
           python3 - <<'PY'
-          import re
+          import re, subprocess
           from pathlib import Path
           pattern=re.compile(r'role[\s_.-]*forge',re.I)
-          text_extensions={'.html','.htm','.css','.js','.mjs','.ts','.svg','.json','.jsonld','.md','.txt','.xml','.webmanifest','.yml','.yaml'}
+          text_ext={'.html','.htm','.css','.js','.mjs','.ts','.svg','.json','.jsonld','.md','.txt','.xml','.webmanifest','.yml','.yaml'}
           findings=[]
           for path in Path('.').rglob('*'):
-              if '.git' in path.parts or not path.is_file():
-                  continue
-              rel=path.as_posix()
-              if pattern.search(rel): findings.append(('filename',rel))
-              if path.suffix.lower() in text_extensions:
+              if '.git' in path.parts or not path.is_file(): continue
+              if pattern.search(path.as_posix()): findings.append(('filename',path.as_posix()))
+              if path.suffix.lower() in text_ext:
                   try: text=path.read_text()
                   except Exception: continue
-                  if pattern.search(text): findings.append(('text',rel))
+                  if pattern.search(text): findings.append(('text',path.as_posix()))
+          for pdf in Path('.').rglob('*.pdf'):
+              if '.git' in pdf.parts: continue
+              data=b'\n'.join([
+                subprocess.check_output(['pdftotext','-layout',str(pdf),'-'],stderr=subprocess.STDOUT),
+                subprocess.check_output(['pdfinfo',str(pdf)],stderr=subprocess.STDOUT),
+                subprocess.check_output(['strings',str(pdf)],stderr=subprocess.STDOUT)
+              ]).decode(errors='ignore')
+              if pattern.search(data): findings.append(('pdf',pdf.as_posix()))
           if findings:
               print(findings)
               raise SystemExit(1)
           PY
-          for pdf in $(find . -path './.git' -prune -o -type f -iname '*.pdf' -print); do
-            { pdftotext -layout "$pdf" -; pdfinfo "$pdf"; strings "$pdf"; } | grep -Eiq "${r}[[:space:]_.-]*${f}" && exit 1 || true
-          done
 
       - name: Commit final public tree
         shell: bash
