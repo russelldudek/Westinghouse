@@ -1,0 +1,63 @@
+name: Diagnose public campaign surfaces
+
+on:
+  push:
+    paths:
+      - '.github/workflows/diagnose-public-surface.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Install PDF tools
+        run: command -v pdfinfo >/dev/null || { sudo apt-get update; sudo apt-get install -y poppler-utils; }
+      - name: Record redacted findings
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/diagnose-public-surface.yml .github/workflows/final-public-surface-audit.yml public-audit-run-id.txt
+          description=$(gh api "repos/$GITHUB_REPOSITORY" --jq '.description // ""')
+          releases=$(gh api "repos/$GITHUB_REPOSITORY/releases?per_page=100" --jq '[.[] | {name: (.name // ""), tag_name: (.tag_name // ""), body: (.body // "")}]')
+          DESCRIPTION="$description" RELEASES="$releases" python3 - <<'PY'
+          import json, os, re, subprocess
+          from pathlib import Path
+          pattern=re.compile(r'role[\s_.-]*forge',re.I)
+          ext={'.html','.htm','.css','.js','.mjs','.ts','.svg','.json','.jsonld','.md','.txt','.xml','.webmanifest','.yml','.yaml'}
+          findings=[]
+          def safe(value): return pattern.sub('[internal-name]',value)
+          for path in Path('.').rglob('*'):
+              if '.git' in path.parts or not path.is_file(): continue
+              rel=path.as_posix()
+              if pattern.search(rel): findings.append({'surface':'filename','path':safe(rel)})
+              if path.suffix.lower() in ext:
+                  try: text=path.read_text()
+                  except Exception: continue
+                  for match in pattern.finditer(text): findings.append({'surface':'text','path':safe(rel),'line':text.count('\n',0,match.start())+1})
+          if pattern.search(os.environ.get('DESCRIPTION','')): findings.append({'surface':'repository_description'})
+          if pattern.search(os.environ.get('RELEASES','')): findings.append({'surface':'release_text'})
+          for pdf in Path('.').rglob('*.pdf'):
+              if '.git' in pdf.parts: continue
+              data=b'\n'.join([
+                subprocess.check_output(['pdftotext','-layout',str(pdf),'-'],stderr=subprocess.STDOUT),
+                subprocess.check_output(['pdfinfo',str(pdf)],stderr=subprocess.STDOUT),
+                subprocess.check_output(['strings',str(pdf)],stderr=subprocess.STDOUT)
+              ]).decode(errors='ignore')
+              if pattern.search(data): findings.append({'surface':'pdf_text_or_metadata','path':safe(pdf.as_posix())})
+          result={'finding_count':len(findings),'findings':findings}
+          Path('public-surface-diagnostic.json').write_text(json.dumps(result,indent=2)+'\n')
+          print(json.dumps(result,indent=2))
+          PY
+          git config user.name 'Candidate Campaign Auditor'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A
+          git commit -m 'Record redacted public campaign findings'
+          git push origin HEAD:main
