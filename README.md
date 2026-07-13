@@ -36,10 +36,9 @@ The Executive Operating Envelope now renders as one continuous clockwise loop co
 
 Directional arrows and traveling signal packets make the full cycle explicit. Scenario selection highlights the affected segment, stressed node, relevant envelope ring, execution-core state, and executive-attention message. Reduced-motion mode preserves the complete loop and scenario states while removing traveling and pulsing effects.
 
-
 ## Verified contact information
 
-The résumé and cover letter use the canonical RoleForge contact values in HTML and generated PDF output: Pittsburgh, Pennsylvania; 412.287.8640; russelldudek@gmail.com; linkedin.com/in/russelldudek; and the Westinghouse campaign URL. The résumé repeats the complete contact block on page two. Tablet and mobile document routes reflow without horizontal overflow while print retains exact US Letter geometry.
+The résumé and cover letter use the verified contact values in HTML and generated PDF output: Pittsburgh, Pennsylvania; 412.287.8640; russelldudek@gmail.com; linkedin.com/in/russelldudek; and the Westinghouse campaign URL. The résumé repeats the complete contact block on page two. Tablet and mobile document routes reflow without horizontal overflow while print retains exact US Letter geometry.
 
 ## Brand relationship
 
@@ -47,16 +46,16 @@ The official Westinghouse wordmark and imagery identify the target employer. The
 
 ## Evidence integrity
 
-Career facts are constrained to `russelldudek/roleforge` candidate evidence. The campaign does not claim direct nuclear-industry experience. Because the complete internal job description was not reliably available through public indexing, company-specific operating recommendations are labeled hypotheses for discovery.
+Career facts are constrained to verified candidate evidence. The campaign does not claim direct nuclear-industry experience. Because the complete internal job description was not reliably available through public indexing, company-specific operating recommendations are labeled hypotheses for discovery.
 
 ## Publication and audit
 
-The static campaign is designed for GitHub Pages from `main` and `/ (root)`. Final audit records are committed alongside the campaign after rendered, PDF, main-branch, canonical-alignment, brand-fidelity, and deployment verification.
+The static campaign is designed for GitHub Pages from `main` and `/ (root)`. Final audit records are committed alongside the campaign after rendered, PDF, main-branch, canonical-alignment, brand-fidelity, confidentiality, and deployment verification.
 
 ## Final verified audit
 
 - Campaign state: complete
-- Audited implementation head: f764f91b6f1bade9264c1509936bb6e32aee8ba2
+- Audited main head: pending final confidentiality verification
 - Live site: `https://russelldudek.github.io/Westinghouse/`
-- Live verification run: 29221458810
-- Canonical Alignment, Brand Fidelity, and Campaign Completion audits: passed
+- Live verification run: pending final confidentiality verification
+- Canonical alignment, brand fidelity, candidate-facing confidentiality, and campaign completion audits: pending final verification
