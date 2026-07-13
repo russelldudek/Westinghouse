@@ -25,11 +25,41 @@
   color: var(--brand-secondary);
   font-weight: 760;
 }
-@media (max-width: 680px) {
+@media screen and (max-width: 840px) {
+  .paper,
+  .report-page {
+    width: calc(100% - 24px);
+    min-height: auto;
+    height: auto;
+    padding: 28px;
+  }
+  .resume-sheet,
+  .letter-paper,
+  .report-page {
+    overflow: visible;
+  }
+  .doc-brandbar,
+  .doc-header {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .doc-brandbar .candidate-label,
+  .doc-contact {
+    text-align: left;
+  }
   .doc-contact.contact-block {
     min-width: 0;
     max-width: none;
     font-size: 8.5px;
+  }
+  .two-col,
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
+  .doc-footer,
+  .report-footer {
+    position: static;
+    margin-top: 20px;
   }
 }
 @media print {
