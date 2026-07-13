@@ -1,0 +1,74 @@
+{
+  "checks": [
+    {
+      "route": "resume.html",
+      "viewport": "tablet",
+      "blocks": 2,
+      "visible": true,
+      "overflow": 0,
+      "values": {
+        "412.287.8640": true,
+        "russelldudek@gmail.com": true,
+        "linkedin.com/in/russelldudek": true,
+        "russelldudek.github.io/Westinghouse/": true
+      },
+      "tel": true,
+      "mailto": true,
+      "linkedin": true,
+      "campaign": true
+    },
+    {
+      "route": "resume.html",
+      "viewport": "mobile",
+      "blocks": 2,
+      "visible": true,
+      "overflow": 0,
+      "values": {
+        "412.287.8640": true,
+        "russelldudek@gmail.com": true,
+        "linkedin.com/in/russelldudek": true,
+        "russelldudek.github.io/Westinghouse/": true
+      },
+      "tel": true,
+      "mailto": true,
+      "linkedin": true,
+      "campaign": true
+    },
+    {
+      "route": "cover-letter.html",
+      "viewport": "tablet",
+      "blocks": 1,
+      "visible": true,
+      "overflow": 0,
+      "values": {
+        "412.287.8640": true,
+        "russelldudek@gmail.com": true,
+        "linkedin.com/in/russelldudek": true,
+        "russelldudek.github.io/Westinghouse/": true
+      },
+      "tel": true,
+      "mailto": true,
+      "linkedin": true,
+      "campaign": true
+    },
+    {
+      "route": "cover-letter.html",
+      "viewport": "mobile",
+      "blocks": 1,
+      "visible": true,
+      "overflow": 0,
+      "values": {
+        "412.287.8640": true,
+        "russelldudek@gmail.com": true,
+        "linkedin.com/in/russelldudek": true,
+        "russelldudek.github.io/Westinghouse/": true
+      },
+      "tel": true,
+      "mailto": true,
+      "linkedin": true,
+      "campaign": true
+    }
+  ],
+  "failures": [],
+  "passed": true
+}

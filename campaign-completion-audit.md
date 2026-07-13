@@ -2,15 +2,13 @@
 
 **Campaign state: building.**
 
-The continuous four-node hero animation has passed its live rendered audit. A fresh RoleForge canonical reread subsequently introduced the newer Candidate Contact Information Contract. The résumé and cover-letter HTML now contain the verified phone, email, LinkedIn, location, and campaign URL, including an attributable contact block on résumé page two.
+The continuous four-node hero animation remains live and passed. The Candidate Contact Information Contract now passes source, responsive HTML, PDF text, and pagination checks:
 
-Remaining completion gates:
+- résumé: exactly 2 pages;
+- cover letter: exactly 1 page;
+- verified phone, email, LinkedIn, location, and campaign URL present in both HTML and PDF output;
+- résumé contact block present on both pages;
+- tablet and mobile document views: zero horizontal overflow;
+- real tel, mailto, LinkedIn, and campaign links present in HTML.
 
-1. regenerate the résumé and cover-letter PDFs from the corrected HTML;
-2. verify exact page counts remain 2 and 1;
-3. verify all required contact values in HTML and extracted PDF text;
-4. inspect every regenerated page at full-page scale;
-5. verify live document routes and PDF bytes from `main`;
-6. refresh the Canonical Skill Alignment and Campaign Completion audits.
-
-No completion claim is valid until these gates pass.
+Remaining completion gates: visual inspection of all three regenerated PDF pages, live Pages byte verification, final canonical alignment audit, and portfolio-learning refresh.

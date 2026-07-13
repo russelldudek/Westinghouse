@@ -1,0 +1,12 @@
+{
+  "run_id": "29221805978",
+  "resume_pages": 2,
+  "cover_letter_pages": 1,
+  "resume_contact_occurrences": {
+    "phone": 3,
+    "email": 3,
+    "linkedin": 3,
+    "campaign_url": 2
+  },
+  "required_values_verified_in_both_pdfs": true
+}
