@@ -20,10 +20,21 @@ The campaign proposes an **Executive Operating Envelope**: commitments, constrai
 - `cover-letter.html` - exactly one-page cover letter in print/PDF.
 - `interview-brief.html` - four-page interview thesis brief in print/PDF.
 - `120-day-plan.html` - three-page entry plan in print/PDF.
-- `styles.css`, `brand-tokens.css`, `app.js` - full-page visual system, brand tokens, interaction, responsiveness, accessibility, and reduced-motion behavior.
+- `styles.css`, `hero-envelope-v2.css`, `brand-tokens.css`, `app.js` - full-page visual system, continuous four-node operating loop, interaction, responsiveness, accessibility, and reduced-motion behavior.
 - `brand-intelligence.md`, `assets/brand/`, `assets/company/` - official-asset provenance, color and typography evidence, local logos, and official imagery.
 - `docs/` - generated PDFs for every printable artifact.
 - `artifact-manifest.json`, `campaign-metadata.json` - auditable route/file inventory and campaign metadata.
+
+## Hero operating model
+
+The Executive Operating Envelope now renders as one continuous clockwise loop connecting all four operating layers in sequence:
+
+1. Commitments
+2. Constraints
+3. Decisions
+4. Learning
+
+Directional arrows and traveling signal packets make the full cycle explicit. Scenario selection highlights the affected segment, stressed node, relevant envelope ring, execution-core state, and executive-attention message. Reduced-motion mode preserves the complete loop and scenario states while removing traveling and pulsing effects.
 
 ## Brand relationship
 
@@ -40,8 +51,7 @@ The static campaign is designed for GitHub Pages from `main` and `/ (root)`. Fin
 ## Final verified audit
 
 - Campaign state: complete
-- Audited source head: 
-- Live site: 
-- Live verification run: 
-- Canonical Alignment, Brand Fidelity, and Campaign Completion audits: passed
-
+- Audited source head: pending post-animation verification
+- Live site: `https://russelldudek.github.io/Westinghouse/`
+- Live verification run: pending post-animation verification
+- Canonical Alignment, Brand Fidelity, and Campaign Completion audits: pending post-animation refresh
