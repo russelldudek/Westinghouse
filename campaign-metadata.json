@@ -17,7 +17,8 @@
   "campaign_state": "complete",
   "audited_source_head": "37ac7388a9e32c6fa838e526e25305dd90adabdd",
   "live_site": "https://russelldudek.github.io/Westinghouse/",
-  "live_verification_run_id": "29221458810",
-  "audited_implementation_head": "f764f91b6f1bade9264c1509936bb6e32aee8ba2",
-  "hero_animation_version": "continuous-four-node-loop-v2"
+  "live_verification_run_id": "29222024252",
+  "audited_implementation_head": "b75322a296232d15c850560489b1f31430ce0f95",
+  "hero_animation_version": "continuous-four-node-loop-v2",
+  "contact_information": "verified-html-and-pdf"
 }

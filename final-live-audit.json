@@ -1,0 +1,167 @@
+{
+  "run_id": "29222024252",
+  "hero": {
+    "desktop": {
+      "counts": {
+        "nodes": 4,
+        "segments": 4,
+        "arrows": 4,
+        "packets": 2
+      },
+      "overflow": 0,
+      "qualifier": true,
+      "states": {
+        "capacity": "CONSTRAINED",
+        "decision": "AGING",
+        "learning": "RECURRING"
+      },
+      "page_errors": [],
+      "http_errors": []
+    },
+    "laptop": {
+      "counts": {
+        "nodes": 4,
+        "segments": 4,
+        "arrows": 4,
+        "packets": 2
+      },
+      "overflow": 0,
+      "qualifier": true,
+      "states": {
+        "capacity": "CONSTRAINED",
+        "decision": "AGING",
+        "learning": "RECURRING"
+      },
+      "page_errors": [],
+      "http_errors": []
+    },
+    "tablet": {
+      "counts": {
+        "nodes": 4,
+        "segments": 4,
+        "arrows": 4,
+        "packets": 2
+      },
+      "overflow": 0,
+      "qualifier": true,
+      "states": {
+        "capacity": "CONSTRAINED",
+        "decision": "AGING",
+        "learning": "RECURRING"
+      },
+      "page_errors": [],
+      "http_errors": []
+    },
+    "mobile": {
+      "counts": {
+        "nodes": 4,
+        "segments": 4,
+        "arrows": 4,
+        "packets": 2
+      },
+      "overflow": 0,
+      "qualifier": true,
+      "states": {
+        "capacity": "CONSTRAINED",
+        "decision": "AGING",
+        "learning": "RECURRING"
+      },
+      "page_errors": [],
+      "http_errors": []
+    },
+    "reduced_motion": {
+      "packet": "none",
+      "loop": "none",
+      "halo": "none",
+      "state": "capacity"
+    }
+  },
+  "documents": {
+    "resume.html": {
+      "tablet": {
+        "blocks": 2,
+        "visible": true,
+        "overflow": 0,
+        "values": {
+          "412.287.8640": true,
+          "russelldudek@gmail.com": true,
+          "linkedin.com/in/russelldudek": true,
+          "russelldudek.github.io/Westinghouse/": true
+        },
+        "tel": true,
+        "mailto": true,
+        "linkedin": true,
+        "campaign": true
+      },
+      "mobile": {
+        "blocks": 2,
+        "visible": true,
+        "overflow": 0,
+        "values": {
+          "412.287.8640": true,
+          "russelldudek@gmail.com": true,
+          "linkedin.com/in/russelldudek": true,
+          "russelldudek.github.io/Westinghouse/": true
+        },
+        "tel": true,
+        "mailto": true,
+        "linkedin": true,
+        "campaign": true
+      }
+    },
+    "cover-letter.html": {
+      "tablet": {
+        "blocks": 1,
+        "visible": true,
+        "overflow": 0,
+        "values": {
+          "412.287.8640": true,
+          "russelldudek@gmail.com": true,
+          "linkedin.com/in/russelldudek": true,
+          "russelldudek.github.io/Westinghouse/": true
+        },
+        "tel": true,
+        "mailto": true,
+        "linkedin": true,
+        "campaign": true
+      },
+      "mobile": {
+        "blocks": 1,
+        "visible": true,
+        "overflow": 0,
+        "values": {
+          "412.287.8640": true,
+          "russelldudek@gmail.com": true,
+          "linkedin.com/in/russelldudek": true,
+          "russelldudek.github.io/Westinghouse/": true
+        },
+        "tel": true,
+        "mailto": true,
+        "linkedin": true,
+        "campaign": true
+      }
+    }
+  },
+  "pdfs": {
+    "resume": {
+      "pages": 2,
+      "values": {
+        "412.287.8640": true,
+        "russelldudek@gmail.com": true,
+        "linkedin.com/in/russelldudek": true,
+        "russelldudek.github.io/Westinghouse/": true
+      }
+    },
+    "cover_letter": {
+      "pages": 1,
+      "values": {
+        "412.287.8640": true,
+        "russelldudek@gmail.com": true,
+        "linkedin.com/in/russelldudek": true,
+        "russelldudek.github.io/Westinghouse/": true
+      }
+    }
+  },
+  "failures": [],
+  "passed": true
+}

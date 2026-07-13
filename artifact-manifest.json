@@ -43,6 +43,9 @@
     "campaign-completion-audit.md",
     "live-browser-audit.json",
     "live-hash-verification.tsv",
-    "deployment-proof.txt"
+    "deployment-proof.txt",
+    "contact-verification.json",
+    "contact-html-audit.json",
+    "final-live-audit.json"
   ]
 }

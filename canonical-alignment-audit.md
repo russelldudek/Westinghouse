@@ -5,7 +5,6 @@
 Campaign: Westinghouse - OPX Chief of Staff  
 Repository: russelldudek/Westinghouse  
 Audited branch: main  
-Audited implementation head: f764f91b6f1bade9264c1509936bb6e32aee8ba2  
-Audit date: July 13, 2026
+Audited implementation head: b75322a296232d15c850560489b1f31430ce0f95
 
-The revised hero makes the complete operating system explicit: Commitments -> Constraints -> Decisions -> Learning -> Commitments. Four connecting segments, four directional arrows, and two full-cycle packets establish system-wide flow. Capacity, decision-delay, and repeat-failure scenarios stress the relevant segment, node, envelope ring, core status, and executive-attention message. Keyboard-operable controls, responsive composition, visible independent-candidate identity, and the reduced-motion equivalent satisfy the current Visual Experience and Role-Derived Motion contracts. Brand identity, evidence, documents, and PDFs remain intact.
+The campaign satisfies the latest RoleForge main-branch contracts, including the newer Candidate Contact Information Contract. The continuous four-node Executive Operating Envelope connects Commitments -> Constraints -> Decisions -> Learning -> Commitments with directional flow and scenario-specific degradation. The résumé and cover letter use the verified phone, email, LinkedIn, location, and campaign URL in HTML and generated PDF output; résumé page two remains attributable and actionable. Exact pagination, responsive document reflow, live reciprocal links, reduced motion, brand fidelity, and live byte equivalence passed.
