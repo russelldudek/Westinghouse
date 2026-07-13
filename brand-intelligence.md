@@ -14,7 +14,7 @@ This is an independent candidate campaign by Russell Dudek for the Westinghouse 
 | AP1000 product image | `assets/company/ap1000-pwr-circle.png` | `https://westinghousenuclear.com/media/31rh5jpq/ap1000-pwr-circle.png` | Used as a product cue in the company-moment composition. It is explicitly Westinghouse imagery, not Russell's work. |
 | Official laboratory image | `assets/company/westinghouse-facility.webp` | `https://westinghousenuclear.com/media/mwjem53b/home25-leftimage-bg-image.jpg?format=webp` | Used in the company-moment section to establish applied-science and technical-personnel character. It is explicitly Westinghouse imagery, not Russell's work. |
 
-The assets were acquired unmodified from the official corporate website, stored locally, checksummed, and committed to the campaign repository. No logo is traced, redrawn, recolored, cropped, animated, filtered, or combined with a Russell/RoleForge mark.
+The assets were acquired unmodified from the official corporate website, stored locally, checksummed, and committed to the campaign repository. No logo is traced, redrawn, recolored, cropped, animated, filtered, or combined with a Russell candidate mark.
 
 ## Color token provenance
 

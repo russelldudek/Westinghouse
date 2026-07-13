@@ -57,5 +57,5 @@ The static campaign is designed for GitHub Pages from `main` and `/ (root)`. Fin
 - Campaign state: complete
 - Audited main head: pending final confidentiality verification
 - Live site: `https://russelldudek.github.io/Westinghouse/`
-- Live verification run: pending final confidentiality verification
-- Canonical alignment, brand fidelity, candidate-facing confidentiality, and campaign completion audits: pending final verification
+- Live verification run: 29222533245
+- Canonical alignment, brand fidelity, candidate-facing confidentiality, and campaign completion audits: passed

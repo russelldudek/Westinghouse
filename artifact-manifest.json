@@ -46,6 +46,9 @@
     "deployment-proof.txt",
     "contact-verification.json",
     "contact-html-audit.json",
-    "final-live-audit.json"
+    "final-live-audit.json",
+    "candidate-facing-confidentiality-audit.md",
+    "public-surface-scan.json",
+    "interview-brief-verification.json"
   ]
 }

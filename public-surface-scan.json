@@ -1,0 +1,13 @@
+{
+  "implementation_head": "8a80592d48c354e1112c5b9289bb1c9e5f1f80ab",
+  "text_and_filename_files_scanned": 26,
+  "pdfs_scanned": 4,
+  "repository_description_scanned": true,
+  "current_release_text_scanned": true,
+  "pdf_text_and_metadata_matches": 0,
+  "forbidden_internal_name_matches": 0,
+  "findings": [],
+  "public_campaign_surface_scan": "passed",
+  "pdf_text_and_metadata_scan": "passed",
+  "candidate_facing_confidentiality": "passed"
+}
