@@ -4,22 +4,21 @@
 
 - Campaign repository: https://github.com/russelldudek/Westinghouse
 - Audited branch: main
-- Audited source head: 37ac7388a9e32c6fa838e526e25305dd90adabdd
-- Job posting: https://careers.westinghousenuclear.com/job/Cranberry-Township-OPX-Chief-of-Staff-NC/1405207900/
+- Audited implementation head: f764f91b6f1bade9264c1509936bb6e32aee8ba2
 - Live site: https://russelldudek.github.io/Westinghouse/
-- Manifest: passed from ref=main
-- Brand fidelity: passed
-- Visible company identity: passed
-- Visual experience: passed
-- Role-derived motion and interaction: passed
-- Responsive render review: passed at all four required viewports
+- Hero animation: continuous four-node operating loop passed
+- Loop topology: 4 nodes, 4 connecting segments, 4 directional arrows, 2 full-cycle signal packets
+- Scenario behavior: capacity, decision, and learning states highlight the relevant segment and node
+- Responsive render review: passed at 1440x900, 1280x800, 768x1024, and 390x844
+- Responsive independent-candidate identity: passed
+- Horizontal overflow: 0px at every audited viewport
 - Reduced motion: passed
-- Documents/PDFs: passed (2-page resume, 1-page cover letter, 4-page brief, 3-page entry plan)
-- Reciprocal resume/cover-letter navigation: passed
-- Live byte comparison: passed
+- Page/script/asset errors: none
+- Live source comparison: app.js and hero-envelope-v2.css matched committed bytes
+- Brand fidelity: passed
+- Documents/PDFs: unchanged and remain passed
 - Canonical Skill Alignment Audit: passed
-- Brand Fidelity Audit: passed
 - Campaign Completion Audit: passed
-- Final verification run: 29197312859
+- Verification run: 29221458810
 
-Final live deployment proof: ROLEFORGE-WESTINGHOUSE-FINAL-AUDIT-29197312859
+Final live deployment proof: ROLEFORGE-WESTINGHOUSE-HERO-V2-29221458810

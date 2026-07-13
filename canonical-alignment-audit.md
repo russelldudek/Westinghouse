@@ -5,7 +5,7 @@
 Campaign: Westinghouse - OPX Chief of Staff  
 Repository: russelldudek/Westinghouse  
 Audited branch: main  
-Audited source head: 37ac7388a9e32c6fa838e526e25305dd90adabdd  
-Audit date: July 12, 2026
+Audited implementation head: f764f91b6f1bade9264c1509936bb6e32aee8ba2  
+Audit date: July 13, 2026
 
-The latest RoleForge skill, portfolio learning, role intelligence, evidence integrity, artifact, Brand Fidelity, GitHub publication, and Campaign Completion contracts were applied to the committed campaign. Candidate evidence, portfolio index, pattern ledger, anti-clone ledger, and relevant cases were re-read. The campaign passes factual integrity, narrative continuity, company/role intelligence, visual experience, role-derived motion, responsive/reduced-motion, print/PDF, brand, and main-branch completeness gates. Internal recommendations remain hypotheses for discovery and nuclear authority remains with accountable experts.
+The revised hero makes the complete operating system explicit: Commitments -> Constraints -> Decisions -> Learning -> Commitments. Four connecting segments, four directional arrows, and two full-cycle packets establish system-wide flow. Capacity, decision-delay, and repeat-failure scenarios stress the relevant segment, node, envelope ring, core status, and executive-attention message. Keyboard-operable controls, responsive composition, visible independent-candidate identity, and the reduced-motion equivalent satisfy the current Visual Experience and Role-Derived Motion contracts. Brand identity, evidence, documents, and PDFs remain intact.

@@ -1,60 +1,147 @@
 {
-  "base": "https://russelldudek.github.io/Westinghouse/",
+  "browser": "/usr/bin/google-chrome",
+  "runId": "29221420405",
   "viewports": {
     "desktop": {
-      "width": 1440,
-      "height": 900,
+      "counts": {
+        "nodes": 4,
+        "segments": 4,
+        "arrows": 4,
+        "packets": 2
+      },
       "overflow": 0,
-      "logoVisible": true,
-      "independent": true,
-      "navToggleVisible": false,
-      "scenario": "capacity",
-      "simulator": "OUTSIDE ENVELOPE"
+      "logo": true,
+      "qualifier": true,
+      "states": {
+        "capacity": {
+          "state": "capacity",
+          "pressed": "true",
+          "stroke": "rgba(243, 105, 102, 0.99)",
+          "core": "CONSTRAINED"
+        },
+        "decision": {
+          "state": "decision",
+          "pressed": "true",
+          "stroke": "rgba(239, 107, 105, 0.984)",
+          "core": "AGING"
+        },
+        "learning": {
+          "state": "learning",
+          "pressed": "true",
+          "stroke": "rgba(239, 107, 105, 0.984)",
+          "core": "RECURRING"
+        }
+      },
+      "pageErrors": [],
+      "httpErrors": []
     },
     "laptop": {
-      "width": 1280,
-      "height": 800,
+      "counts": {
+        "nodes": 4,
+        "segments": 4,
+        "arrows": 4,
+        "packets": 2
+      },
       "overflow": 0,
-      "logoVisible": true,
-      "independent": true,
-      "navToggleVisible": false,
-      "scenario": "capacity",
-      "simulator": "OUTSIDE ENVELOPE"
+      "logo": true,
+      "qualifier": true,
+      "states": {
+        "capacity": {
+          "state": "capacity",
+          "pressed": "true",
+          "stroke": "rgba(239, 107, 105, 0.984)",
+          "core": "CONSTRAINED"
+        },
+        "decision": {
+          "state": "decision",
+          "pressed": "true",
+          "stroke": "rgba(239, 107, 105, 0.984)",
+          "core": "AGING"
+        },
+        "learning": {
+          "state": "learning",
+          "pressed": "true",
+          "stroke": "rgba(239, 107, 105, 0.984)",
+          "core": "RECURRING"
+        }
+      },
+      "pageErrors": [],
+      "httpErrors": []
     },
     "tablet": {
-      "width": 768,
-      "height": 1024,
+      "counts": {
+        "nodes": 4,
+        "segments": 4,
+        "arrows": 4,
+        "packets": 2
+      },
       "overflow": 0,
-      "logoVisible": true,
-      "independent": true,
-      "navToggleVisible": true,
-      "scenario": "capacity",
-      "simulator": "OUTSIDE ENVELOPE"
+      "logo": true,
+      "qualifier": true,
+      "states": {
+        "capacity": {
+          "state": "capacity",
+          "pressed": "true",
+          "stroke": "rgba(243, 105, 102, 0.99)",
+          "core": "CONSTRAINED"
+        },
+        "decision": {
+          "state": "decision",
+          "pressed": "true",
+          "stroke": "rgba(243, 105, 102, 0.99)",
+          "core": "AGING"
+        },
+        "learning": {
+          "state": "learning",
+          "pressed": "true",
+          "stroke": "rgba(243, 105, 102, 0.99)",
+          "core": "RECURRING"
+        }
+      },
+      "pageErrors": [],
+      "httpErrors": []
     },
     "mobile": {
-      "width": 390,
-      "height": 844,
+      "counts": {
+        "nodes": 4,
+        "segments": 4,
+        "arrows": 4,
+        "packets": 2
+      },
       "overflow": 0,
-      "logoVisible": true,
-      "independent": true,
-      "navToggleVisible": true,
-      "scenario": "capacity",
-      "simulator": "OUTSIDE ENVELOPE"
+      "logo": true,
+      "qualifier": true,
+      "states": {
+        "capacity": {
+          "state": "capacity",
+          "pressed": "true",
+          "stroke": "rgba(243, 105, 102, 0.99)",
+          "core": "CONSTRAINED"
+        },
+        "decision": {
+          "state": "decision",
+          "pressed": "true",
+          "stroke": "rgba(243, 105, 102, 0.99)",
+          "core": "AGING"
+        },
+        "learning": {
+          "state": "learning",
+          "pressed": "true",
+          "stroke": "rgba(243, 105, 102, 0.99)",
+          "core": "RECURRING"
+        }
+      },
+      "pageErrors": [],
+      "httpErrors": []
     }
   },
   "reducedMotion": {
-    "contourAnimation": "none",
-    "coreAnimation": "none",
-    "signalDisplay": "none",
-    "controlsUsable": true,
-    "scenario": "decision"
+    "packet": "none",
+    "loop": "none",
+    "halo": "none",
+    "state": "capacity"
   },
-  "consoleErrors": [
-    "desktop: Failed to load resource: the server responded with a status of 404 ()"
-  ],
-  "pageErrors": [],
-  "httpErrors": [],
-  "nonBlockingFavicon404": false,
-  "passed": true,
-  "failures": []
+  "failures": [],
+  "exception": null,
+  "passed": true
 }
