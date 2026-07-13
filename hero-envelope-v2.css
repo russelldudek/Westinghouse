@@ -1,0 +1,59 @@
+/* Executive Operating Envelope v2: a continuous four-node operating loop. */
+.hero-system .envelope-canvas{
+  background:
+    radial-gradient(circle at 50% 46%,rgba(30,194,243,.09),transparent 38%),
+    linear-gradient(180deg,#173e64 0,#082c54 100%);
+}
+.hero-system .diagram-field{fill:url(#dotGrid);stroke:rgba(255,255,255,.12);stroke-width:1}
+.hero-system .envelope-ring{fill:none;stroke:rgba(30,194,243,.38);stroke-width:2;stroke-dasharray:5 8;transition:stroke .35s ease,opacity .35s ease,transform .35s ease;transform-box:fill-box;transform-origin:center}
+.hero-system .envelope-ring-1{opacity:.88}.hero-system .envelope-ring-2{opacity:.62}.hero-system .envelope-ring-3{opacity:.42}
+.hero-system .loop-track,.hero-system .loop-segment,.hero-system .loop-flow{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.hero-system .loop-track{stroke:rgba(191,226,246,.28);stroke-width:8}
+.hero-system .loop-segment{stroke:rgba(66,201,246,.84);stroke-width:4.5;transition:stroke .35s ease,stroke-width .35s ease,filter .35s ease,opacity .35s ease}
+.hero-system .loop-flow{stroke:rgba(231,248,255,.82);stroke-width:2.2;stroke-dasharray:12 20;animation:operating-loop-travel 5.6s linear infinite}
+.hero-system .loop-arrow{fill:#c9efff;opacity:.9;transition:fill .35s ease,filter .35s ease}
+.hero-system .flow-packet{fill:var(--campaign-attention);filter:url(#packetGlow)}
+.hero-system .system-node .node-halo{fill:none;stroke:transparent;stroke-width:2;opacity:0;transform-box:fill-box;transform-origin:center;transition:opacity .35s ease,stroke .35s ease}
+.hero-system .system-node .node-disc{fill:#0a315b;stroke:#31c5fa;stroke-width:2.6;filter:url(#nodeGlow);transition:fill .35s ease,stroke .35s ease,filter .35s ease}
+.hero-system .system-node .node-index{font-size:12px;font-weight:900;letter-spacing:.04em}
+.hero-system .system-node .node-label{font-size:13.5px;font-weight:850}
+.hero-system .system-node .node-sub{font-size:9.2px;fill:#a8c8dc;font-weight:520}
+.hero-system .execution-core .core-orbit{fill:none;stroke:rgba(30,194,243,.42);stroke-width:1.7;stroke-dasharray:4 7}
+.hero-system .execution-core .core-disc{fill:#082c54;stroke:var(--brand-accent);stroke-width:2.8;filter:url(#coreGlow);transition:stroke .35s ease,filter .35s ease}
+.hero-system .execution-core .core-pulse{fill:none;stroke:rgba(30,194,243,.58);stroke-width:2;animation:core-pulse 3.2s ease-out infinite}
+.hero-system .attention-strip{grid-template-columns:minmax(135px,auto) 1fr auto;padding:13px 15px;gap:16px}
+.hero-system .attention-strip strong{font-size:.76rem;line-height:1.35}
+.hero-system .scenario{position:relative;transition:background .25s ease,color .25s ease,box-shadow .25s ease}
+.hero-system .scenario.is-active{background:var(--brand-secondary);color:white;box-shadow:inset 0 0 0 2px var(--campaign-attention)}
+.hero-system.is-transitioning .execution-core .core-disc{animation:scenario-settle .55s ease-out}
+.hero-system[data-state="capacity"] .loop-top,
+.hero-system[data-state="decision"] .loop-right,
+.hero-system[data-state="learning"] .loop-bottom{stroke:#ff625c;stroke-width:6;filter:url(#riskGlow)}
+.hero-system[data-state="capacity"] .arrow-top,
+.hero-system[data-state="decision"] .arrow-right,
+.hero-system[data-state="learning"] .arrow-bottom{fill:#ff8b84;filter:url(#riskGlow)}
+.hero-system[data-state="capacity"] .node-constraint .node-disc,
+.hero-system[data-state="decision"] .node-decision .node-disc,
+.hero-system[data-state="learning"] .node-learning .node-disc{fill:#562d39;stroke:#ff625c;filter:url(#riskGlow)}
+.hero-system[data-state="capacity"] .node-constraint .node-halo,
+.hero-system[data-state="decision"] .node-decision .node-halo,
+.hero-system[data-state="learning"] .node-learning .node-halo{opacity:.82;stroke:#ff625c;animation:node-warning 1.8s ease-in-out infinite}
+.hero-system:not([data-state="balanced"]) .execution-core .core-disc{stroke:var(--campaign-attention)}
+.hero-system[data-state="capacity"] .envelope-ring-1,
+.hero-system[data-state="decision"] .envelope-ring-2,
+.hero-system[data-state="learning"] .envelope-ring-3{stroke:rgba(255,98,92,.74);opacity:.9}
+@keyframes operating-loop-travel{to{stroke-dashoffset:-64}}
+@keyframes node-warning{0%,100%{transform:scale(.94);opacity:.38}50%{transform:scale(1.08);opacity:.9}}
+@keyframes scenario-settle{0%{transform:scale(.94);opacity:.72}60%{transform:scale(1.035);opacity:1}100%{transform:scale(1)}}
+@media(max-width:680px){
+  .hero-system .attention-strip{grid-template-columns:1fr;padding:12px 13px;gap:6px}
+  .hero-system .system-node .node-label{font-size:14px}
+  .hero-system .loop-track{stroke-width:10}
+  .hero-system .loop-segment{stroke-width:5.5}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-system .loop-flow,.hero-system .core-pulse,.hero-system .node-halo{animation:none!important}
+  .hero-system .flow-packet{display:none}
+  .hero-system .loop-segment,.hero-system .loop-arrow,.hero-system .node-disc,.hero-system .node-halo,.hero-system .core-disc,.hero-system .envelope-ring{transition:none!important}
+  .hero-system.is-transitioning .execution-core .core-disc{animation:none!important}
+}
