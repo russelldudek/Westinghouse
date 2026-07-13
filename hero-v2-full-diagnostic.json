@@ -1,0 +1,116 @@
+{
+  "browser": "/usr/bin/google-chrome",
+  "runId": "29221337757",
+  "viewports": {
+    "desktop": {
+      "counts": {
+        "nodes": 4,
+        "segments": 4,
+        "arrows": 4,
+        "packets": 2
+      },
+      "overflow": 0,
+      "logo": true,
+      "qualifier": true,
+      "states": {
+        "capacity": {
+          "exception": "Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')"
+        },
+        "decision": {
+          "exception": "Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')"
+        },
+        "learning": {
+          "exception": "Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')"
+        }
+      }
+    },
+    "laptop": {
+      "counts": {
+        "nodes": 4,
+        "segments": 4,
+        "arrows": 4,
+        "packets": 2
+      },
+      "overflow": 0,
+      "logo": true,
+      "qualifier": true,
+      "states": {
+        "capacity": {
+          "exception": "Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')"
+        },
+        "decision": {
+          "exception": "Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')"
+        },
+        "learning": {
+          "exception": "Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')"
+        }
+      }
+    },
+    "tablet": {
+      "counts": {
+        "nodes": 4,
+        "segments": 4,
+        "arrows": 4,
+        "packets": 2
+      },
+      "overflow": 0,
+      "logo": true,
+      "qualifier": true,
+      "states": {
+        "capacity": {
+          "exception": "Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')"
+        },
+        "decision": {
+          "exception": "Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')"
+        },
+        "learning": {
+          "exception": "Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')"
+        }
+      }
+    },
+    "mobile": {
+      "counts": {
+        "nodes": 4,
+        "segments": 4,
+        "arrows": 4,
+        "packets": 2
+      },
+      "overflow": 0,
+      "logo": true,
+      "qualifier": true,
+      "states": {
+        "capacity": {
+          "exception": "Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')"
+        },
+        "decision": {
+          "exception": "Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')"
+        },
+        "learning": {
+          "exception": "Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')"
+        }
+      }
+    }
+  },
+  "reducedMotion": {
+    "packet": "none",
+    "loop": "none",
+    "halo": "none",
+    "state": "capacity"
+  },
+  "failures": [
+    "desktop: capacity exception Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')",
+    "desktop: decision exception Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')",
+    "desktop: learning exception Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')",
+    "laptop: capacity exception Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')",
+    "laptop: decision exception Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')",
+    "laptop: learning exception Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')",
+    "tablet: capacity exception Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')",
+    "tablet: decision exception Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')",
+    "tablet: learning exception Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')",
+    "mobile: capacity exception Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')",
+    "mobile: decision exception Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')",
+    "mobile: learning exception Error('Locator.inner_text: Error: Node is not an HTMLElement\\nCall log:\\n  - waiting for locator(\"#coreStatus\")\\n')"
+  ],
+  "exception": null,
+  "passed": false
+}
