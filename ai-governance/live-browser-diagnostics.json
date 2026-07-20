@@ -1,7 +1,0 @@
-{
-  "route_viewport_checks": 24,
-  "errors": [
-    "ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (403, 2963)\n  (Session info: chrome=150.0.7871.114); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception\nStacktrace:\n#0 0x5609f769741a <unknown>\n#1 0x5609f706f689 <unknown>\n#2 0x5609f70cb795 <unknown>\n#3 0x5609f70c9872 <unknown>\n#4 0x5609f70c725c <unknown>\n#5 0x5609f70c6357 <unknown>\n#6 0x5609f70ba162 <unknown>\n#7 0x5609f70b9aa7 <unknown>\n#8 0x5609f710d329 <unknown>\n#9 0x5609f70b81df <unknown>\n#10 0x5609f70b9031 <unknown>\n#11 0x5609f765cbd7 <unknown>\n#12 0x5609f765b3a8 <unknown>\n#13 0x5609f7646076 <unknown>\n#14 0x5609f765bf7a <unknown>\n#15 0x5609f762df70 <unknown>\n#16 0x5609f7682c38 <unknown>\n#17 0x5609f7682dd5 <unknown>\n#18 0x5609f7695fce <unknown>\n#19 0x7fd45109caa4 <unknown>\n#20 0x7fd451129c6c <unknown>\n"
-  ],
-  "observations": {}
-}
