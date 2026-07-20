@@ -21,6 +21,17 @@ jobs:
           ref: main
           fetch-depth: 0
 
+      - name: Mark live verifier run
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s\n' "$GITHUB_RUN_ID" > .live-verification-run
+          git config user.name 'Candidate Campaign Auditor'
+          git config user.email 'actions@users.noreply.github.com'
+          git add .live-verification-run
+          git commit -m 'Mark live campaign verification run'
+          git push origin HEAD:main
+
       - name: Wait for and verify the live static release
         shell: bash
         run: |
@@ -57,12 +68,13 @@ jobs:
           set -euo pipefail
           python -m pip install --disable-pip-version-check --quiet selenium
           python - <<'PY'
+          from pathlib import Path
           from selenium import webdriver
           from selenium.webdriver.chrome.options import Options
           from selenium.webdriver.common.by import By
           from selenium.webdriver.support.ui import WebDriverWait
           from selenium.webdriver.support import expected_conditions as EC
-          import json
+          import json, time
           base='https://russelldudek.github.io/Westinghouse/ai-governance/'
           routes=['index.html','resume.html','cover-letter.html','interview-brief.html','120-day-plan.html','assurance-case-standard.html']
           viewports=[(1440,900),(1280,800),(768,1024),(390,844)]
@@ -154,7 +166,7 @@ jobs:
 
           Company-specific use cases, controls, and operating recommendations are candidate hypotheses for discovery rather than claims about undisclosed Westinghouse systems.
           EOF
-          rm -f .github/workflows/verify-ai-governance-live.yml
+          rm -f .live-verification-run .github/workflows/verify-ai-governance-live.yml
           git config user.name 'Candidate Campaign Auditor'
           git config user.email 'actions@users.noreply.github.com'
           git add -A
