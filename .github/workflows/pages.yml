@@ -4,10 +4,12 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '.pages-deployment-run'
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -23,6 +25,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Mark Pages deployment run
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s\n' "$GITHUB_RUN_ID" > .pages-deployment-run
+          git config user.name 'Candidate Campaign Publisher'
+          git config user.email 'actions@users.noreply.github.com'
+          git add .pages-deployment-run
+          git commit -m 'Mark Pages deployment run'
+          git push origin HEAD:main
 
       - name: Ensure GitHub Actions is the Pages source
         env:
