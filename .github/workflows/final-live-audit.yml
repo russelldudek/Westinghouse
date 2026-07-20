@@ -27,8 +27,8 @@ jobs:
           set -euo pipefail
           base='https://russelldudek.github.io/Westinghouse/ai-governance'
           ready=0
-          for attempt in $(seq 1 180); do
-            if curl -fsSL "$base/index.html?v=$GITHUB_RUN_ID-$attempt" | grep -q 'Make assurance'; then
+          for attempt in $(seq 1 60); do
+            if curl -fsSL "$base/index.html?v=$GITHUB_RUN_ID-$attempt" -o /tmp/live-index.html && grep -q 'Make assurance' /tmp/live-index.html; then
               ready=1
               break
             fi
