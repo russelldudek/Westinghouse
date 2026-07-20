@@ -6,6 +6,7 @@ on:
       - main
     paths-ignore:
       - '.pages-deployment-run'
+      - '.pages-api-diagnostic.txt'
   workflow_dispatch:
 
 permissions:
@@ -40,20 +41,43 @@ jobs:
           git commit -m 'Mark Pages deployment run'
           git push origin HEAD:main
 
-      - name: Ensure GitHub Actions is the Pages source
+      - name: Inspect and request the GitHub Actions Pages source
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
-          set -euo pipefail
-          if gh api "repos/$GITHUB_REPOSITORY/pages" >/tmp/pages.json 2>/dev/null; then
-            gh api --method PUT "repos/$GITHUB_REPOSITORY/pages" -f build_type=workflow >/tmp/pages-updated.json
+          set -u
+          : > /tmp/pages-before.json
+          : > /tmp/pages-before.err
+          : > /tmp/pages-change.json
+          : > /tmp/pages-change.err
+          if gh api "repos/$GITHUB_REPOSITORY/pages" >/tmp/pages-before.json 2>/tmp/pages-before.err; then
+            before_status=0
+            gh api --method PUT "repos/$GITHUB_REPOSITORY/pages" -f build_type=workflow >/tmp/pages-change.json 2>/tmp/pages-change.err
+            change_status=$?
+            operation=update
           else
-            gh api --method POST "repos/$GITHUB_REPOSITORY/pages" -f build_type=workflow >/tmp/pages-created.json
+            before_status=$?
+            gh api --method POST "repos/$GITHUB_REPOSITORY/pages" -f build_type=workflow >/tmp/pages-change.json 2>/tmp/pages-change.err
+            change_status=$?
+            operation=create
           fi
+          {
+            printf 'get_status=%s\noperation=%s\nchange_status=%s\n' "$before_status" "$operation" "$change_status"
+            printf '%s\n' '--- before ---'
+            cat /tmp/pages-before.json /tmp/pages-before.err
+            printf '%s\n' '--- change ---'
+            cat /tmp/pages-change.json /tmp/pages-change.err
+          } > .pages-api-diagnostic.txt
+          git add .pages-api-diagnostic.txt
+          git commit -m 'Record Pages API diagnostic'
+          git push origin HEAD:main
+          exit 0
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Upload static campaign tree
         uses: actions/upload-pages-artifact@v4
